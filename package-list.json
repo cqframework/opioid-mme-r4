@@ -1,0 +1,14 @@
+{
+ "package-id" : "fhir.cdc.opioid-mme-r4",
+ "title" : "CDC Opioid MME",
+ "canonical" : "http://fhir.org/guides/cdc/opioid-mme-r4",
+ "introduction" : "This implementation guide provides Milligram Morphine Equivalent calculation logic consistent with the
+ Centers For Disease Control and Prevention (CDC) Opioid Prescribing Guidelines.",
+ "list" : [{
+  "version" : "current",
+  "desc" : "Continuous Integration Build (latest in version control)",
+  "path" : "http://build.fhir.org/ig/cqframework/opioid-mme-r4",
+  "status" : "ci-build",
+  "current" : true
+ }]
+}

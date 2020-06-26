@@ -1,0 +1,21 @@
+{
+  "resourceType": "Library",
+  "id": "OMTKData",
+  "version": "3.0.0",
+  "name": "OMTKData",
+  "status": "active",
+  "experimental": false,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "content": [
+    {
+      "id": "ig-loader-OMTKData.cql"
+    }
+  ]
+}
