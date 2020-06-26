@@ -56,15 +56,14 @@ define function Prescriptions(Orders List<MedicationRequest>):
 
 define function MME(prescriptions List<MedicationRequest>):
   (Prescriptions(prescriptions)) P
-    let mme: SingletonFrom(OMTKLogic.CalculateMMEs({ { rxNormCode: P.rxNormCode, doseQuantity: P.dose, dosesPerDay: P.dosesPerDay } }))
+    let mmePerIngredient: OMTKLogic.CalculateMMEs({ { rxNormCode: P.rxNormCode, doseQuantity: P.dose, dosesPerDay: P.dosesPerDay } })
     return {
       rxNormCode: P.rxNormCode,
       isDraft: P.isDraft,
       isPRN: P.isPRN,
       prescription: P.prescription,
-      dailyDose: mme.dailyDoseDescription,
-      conversionFactor: mme.conversionFactor,
-      mme: mme.mme
+      dailyDose: Combine(mmePerIngredient X return X.dailyDoseDescription, '\r\n'),
+      mme: Sum(mmePerIngredient X return X.mme)
     }
 
 define function TotalMME(prescriptions List<MedicationRequest>):
