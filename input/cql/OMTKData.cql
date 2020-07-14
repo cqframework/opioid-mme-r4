@@ -1,83 +1,20 @@
 library OMTKData version '3.0.0'
 
-define Months: { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }
-
-define Days28: { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  21, 22, 23, 24, 25, 26, 27, 28
-}
-define Days29: { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  21, 22, 23, 24, 25, 26, 27, 28, 29
-}
-define Days30: { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  21, 22, 23, 24, 25, 26, 27, 28, 29, 30
-}
-define Days31: { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-  31
-}
-
 /*
-Returns true if the given year is a leap year, false otherwise
+This library contains drug ingredient data for opioid ingredients of combinations drugs.
+The content was produced using the process described [here](http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-1-medication-and-terminology-knowledge-base).
+
+This version of the content was generated on 2020-03-01
+
+This product uses publicly available data courtesy of the U.S. National Library of Medicine (NLM),
+National Institutes of Health, Department of Health and Human Services; NLM is not responsible for
+the product and does not endorse or recommend this or any other product.
+
+Nelson SJ, Zeng K, Kilbourne J, Powell T, Moore R. Normalized names for clinical drugs: RxNorm at 6 years.
+J Am Med Inform Assoc. 2011 Jul-Aug;18(4)441-8. doi: 10.1136/amiajnl-2011-000116.
+Epub 2011 Apr 21. PubMed PMID: 21515544; PubMed Central PMCID: PMC3128404.
+[Full text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3128404/)
 */
-define function IsLeapYear(y Integer):
-  (y mod 4 = 0 and y mod 100 != 0) or y mod 400 = 0
-
-
-/*
-Returns a list of the days in the given month in the given year
-List<DateTime>
-*/
-define function DaysInMonth(y Integer, m Integer):
-  (
-    case
-      when m in { 1, 3, 5, 7, 8, 10, 12 } then Days31
-      when m = 2 then if IsLeapYear(y) then Days29 else Days28
-      else Days30
-    end
-  ) D
-    return DateTime(y, m, D)
-
-/*
-Returns a list of the days in the given year
-List<DateTime>
-*/
-define function DaysInYear(y Integer):
-  flatten (
-    Months M
-      return DaysInMonth(y, M)
-  )
-
-define function DaysInPeriod(period Interval<DateTime>):
-  case
-    when start of period is null or end of period is null then null
-    when start of period same year as end of period then
-      case
-        when month from start of period = month from end of period then
-          (DaysInMonth(year from start of period, month from start of period)) D
-            where D same day or after start of period
-              and D same day or before end of period
-        else
-          (DaysInYear(year from start of period)) D
-            where D same day or after start of period
-              and D same day or before end of period
-      end
-    when difference in years between start of period and end of period = 1 then
-      (
-        (DaysInYear(year from start of period)) D
-          where D same day or after start of period
-            and D same day or before end of period
-        )
-        union (
-          (DaysInYear(year from end of period)) D
-            where D same day or after start of period
-              and D same day or before end of period
-          )
-    else null // Should maybe throw, can't calculate arbitrary years, need the expand operator (1.3)
-  end
 
 /*
 DrugIngredients:
@@ -93,7 +30,8 @@ DrugIngredients:
     strengthUnit String
   }>
 */
-// Generated from LocalDataStore_RxNav_OpioidCds-2020-02-18.sqlite
+
+// Generated from LocalDataStore_RxNav_OpioidCds-2020-03-01.sqlite
 define DrugIngredients:
 {
   { drugCode: 197696, drugName: '72 HR Fentanyl 0.075 MG/HR Transdermal System', doseFormCode: 316987, doseFormName: 'Transdermal System', ingredientCode: 4337, ingredientName: 'Fentanyl', strength: '0.075 MG/HR', strengthValue: 0.075, strengthUnit: 'MG/HR' },

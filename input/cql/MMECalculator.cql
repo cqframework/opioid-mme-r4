@@ -1,10 +1,16 @@
 library MMECalculator version '3.0.0'
 
+/*
+FHIR R4 surfacing of the OMTKLogic to provide MME calculation based on MedicationRequest data
+*/
+
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
 
+include FHIRCommon version '3.0.0'
 include OMTKLogic version '3.0.0'
+include Tx version '3.0.0'
 
 context Patient
 
@@ -49,7 +55,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
           // TODO: Shouldn't need the .value here on asNeededBoolean
           medicationName + ' ' + doseDescription + ' q' + frequencyDescription + (if dosageInstruction.asNeeded then ' PRN' else ''),
       dose: if doseAndRate.dose is FHIR.Range
-            then (doseAndRate.dose as FHIR.Range).high
+            then FHIRHelpers.ToQuantity((doseAndRate.dose as FHIR.Range).high)
             else FHIRHelpers.ToQuantity(doseAndRate.dose as FHIR.SimpleQuantity),
       dosesPerDay: Coalesce(OMTKLogic.ToDaily(frequency, period), 1.0)
     }
