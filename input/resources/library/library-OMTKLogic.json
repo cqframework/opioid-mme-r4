@@ -3,6 +3,7 @@
   "id": "OMTKLogic",
   "version": "3.0.0",
   "name": "OMTKLogic",
+  "title": "Opioid Management Terminology Knowledge Logic",
   "status": "active",
   "experimental": false,
   "type": {
@@ -13,6 +14,65 @@
       }
     ]
   },
+  "description": "This library provides functionality for calculating Milligram Morphine Equivalents (MME) for opioid medications, as described in the CDC Opioid Prescribing Guideline.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "182888003",
+            "display": "Medication requested (situation)"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "focus",
+        "display": "Clinical Focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "82423001",
+            "display": "Chronic pain (finding)"
+          }
+        ]
+      }
+    }
+  ],
+  "lastReviewDate": "2020-07-14",
+  "topic": [
+    {
+      "text": "Opioid Prescribing"
+    }
+  ],
+  "copyright": "This product uses publicly available data courtesy of the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.",
+  "relatedArtifact": [
+    {
+      "type": "citation",
+      "citation": "Nelson SJ, Zeng K, Kilbourne J, Powell T, Moore R. Normalized names for clinical drugs: RxNorm at 6 years.\nJ Am Med Inform Assoc. 2011 Jul-Aug;18(4)441-8. doi: 10.1136/amiajnl-2011-000116.\nEpub 2011 Apr 21. PubMed PMID: 21515544; PubMed Central PMCID: PMC3128404.\n[Full text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3128404/)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3128404/"
+    },
+    {
+      "type": "documentation",
+      "display": "CDC Opioid Prescribing Guideline - Service Documentation",
+      "url": "http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-3-core-logic-processing-java-class"
+    },
+    {
+      "type": "citation",
+      "citation": "National Center for Injury Prevention and Control. CDC compilation of benzodiazepines, muscle relaxants, stimulants, zolpidem, and opioid analgesics with oral morphine milligram equivalent conversion factors, 2016 version. Atlanta, GA: Centers for Disease Control and Prevention; 2016. Available at http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf.",
+      "url": "http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf"
+    }
+  ],
   "content": [
     {
       "id": "ig-loader-OMTKLogic.cql"

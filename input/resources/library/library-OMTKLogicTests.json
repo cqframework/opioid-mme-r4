@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "OMTKLogicTests",
+  "version": "3.0.0",
+  "name": "OMTKLogicTests",
+  "title": "Tests of the Opioid Management Terminology Knowledge Logic library",
+  "status": "active",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "description": "This library tests the MME calculator provided by the OMTKLogic library",
+  "content": [
+    {
+      "id": "ig-loader-OMTKLogicTests.cql"
+    }
+  ]
+}

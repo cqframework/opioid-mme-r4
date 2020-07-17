@@ -1,16 +1,15 @@
 library MMECalculator version '3.0.0'
 
 /*
-FHIR R4 surfacing of the OMTKLogic to provide MME calculation based on MedicationRequest data
+This library contains logic to surface the MME calculation functionality provided
+by the OMTKLogic library by extracting appropriate information from FHIR R4
+MedicationRequest resource.
 */
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
-
-include FHIRCommon version '3.0.0'
 include OMTKLogic version '3.0.0'
-include Tx version '3.0.0'
 
 context Patient
 
@@ -18,7 +17,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
   Orders O
     let
       // NOTE: Assuming medication is specified as a CodeableConcept with a single RxNorm code
-      rxNormCode: FHIRHelpers.ToCode((O.medication as FHIR.CodeableConcept).coding[0]),
+      rxNormCode: FHIRHelpers.ToCode(singleton from (((O.medication as FHIR.CodeableConcept).coding) C where C in OMTKLogic.RXNORM)),
       medicationName: OMTKLogic.GetMedicationName(rxNormCode),
       // NOTE: Assuming a single dosage instruction element
       dosageInstruction: O.dosageInstruction[0],

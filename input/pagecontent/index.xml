@@ -3,8 +3,208 @@
   <a name="intro"> </a>
   <h3>Introduction</h3>
 	<p>
-    This implementation guide provides Milligram Morphine Equivalent calculation logic consistent with the
+    This implementation guide provides Milligram Morphine Equivalent (MME) calculation logic as described by the
     Centers For Disease Control and Prevention (CDC) Opioid Prescribing Guidelines:
   </p>
-  <a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC guideline for presbing opioids for chronic pain</a>
+  <a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC guideline for prescribing opioids for chronic pain</a>
+
+  <p>
+    This implementation guide was developed based on work initially done as part of the Clinical Quality Framework
+    Initiative, a public-private partnership sponsored by the Centers for Medicare &amp; Medicaid Services (CMS) and
+    the U.S. Office of the National Coordinator for Health Information Technology (ONC) to identify, develop, and harmonize
+    standards for clinical decision support and electronic clinical quality measurement, as well as a joint effort by
+    the Centers for Disease Control and Prevention (CDC) and the Office of the National Coordinator for Health IT (ONC)
+    focused on improving processes for the development of standardized, shareable, computable decision support artifacts
+    using the CDC Opioid Prescribing Guideline as a model case.
+  </p>
+
+  <a name="overview"> </a>
+  <h3>Overview</h3>
+
+  <p>
+    The MME calculation guidance provided above is based on conversion factors for each of the various opioids.
+    Due to the possibility of combination drugs, the component ingredients of a drug need to be considered in
+    order to correctly determine the opioid ingredient strength. To determine this, the calculator requires
+    drug component information to be available. This information can be determined using the <a href="https://rxnav.nlm.nih.gov/">RxNav API</a>.
+    To avoid having to include a service call to this API during the calculation, the required information is
+    cached according to the process described <a href="http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-1-medication-and-terminology-knowledge-base">here</a>.
+  </p>
+
+  <p>
+    That process results in a Microsoft Access database. Within CQL, that data can be accessed by defining a
+    data model (using CQL <a href="https://cql.hl7.org/07-physicalrepresentation.html#data-model-references">ModelInfo</a>)
+    and using that to retrieve data from that database. However, that approach would introduce a run-time dependency
+    for the MME calculator that would then need to be distributed with the calculator, as well as require
+    implementing systems to support access using this data model. To avoid this runtime dependency, the
+    data is converted to a "pure" CQL expression, and distributed in the OMTKData CQL library.
+  </p>
+
+  <p>
+    For a more detailed description of the MME calculator, refer to the <a href="mme-calculator.html">MME Calculator</a> page in this guide.
+  </p>
+
+  <a name="contents"> </a>
+  <h3>Contents</h3>
+
+  <p>
+    The MME calculation logic is contained within three libraries:
+  </p>
+
+  <ul>
+    <li><b><a href="Library-OMTKData.html">OMTKData</a></b> - The RxNorm drug ingredient data required to determine the strength of individual ingredients within combination drugs.</li>
+    <li><b><a href="Library-OMTKLogic.html">OMTKLogic</a></b> - The core MME calculator, expressed in pure CQL and independent of any particular data model</li>
+    <li><b><a href="Library-MMECalculator.html">MMECalculator</a></b> - Logic to apply the MME calculator to FHIR R4 MedicationRequest resources</li>
+  </ul>
+
+  <p>
+    Layering the calculator in this way enables it to be used with different data models. In particular, the calculator
+    is being used with <a href="">Quality Data Model</a> as part of the specification of a Potential Opioid Overuse electronic
+    Clinical Quality Measure (eCQM), and as part of the computable representation of the CDC Opioid Prescribing Guideline in
+    both <a href="">FHIR STU3</a> and <a href="">FHIR R4</a> versions.
+  </p>
+
+  <a name="data-elements"> </a>
+  <h3>Data Elements</h3>
+
+  <p>
+    The FHIR R4 MME calculator only uses the MedicationRequest resource. To ensure proper functioning with this calculator,
+    this implementation guide defines a MedicationRequest profile. Resources used with this calculator must conform to this
+    profile in order to produce the expected results:
+  </p>
+
+  <a href="StructureDefinition-mmemedicationrequest.html">MMEMedicationRequest</a>
+
+  <a name="usage"> </a>
+  <h3>Usage</h3>
+
+  <p>
+    The calculator is intended to be used by referencing this content IG as a dependency, allowing the calculator
+    to be referenced by including the MMECalculator in a CQL library:
+  </p>
+
+  <code><pre>library Example version '0.1.0'
+
+using FHIR version '4.0.1'
+
+include fhir.cdc."opioid-mme-r4".MMECalculator version '3.0.0'
+
+context Patient
+
+define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
+
+  <p>
+    This example library calls the <code>TotalMME</code> function of the <code>MMECalculator</code> library,
+    passing the set of <code>MedicationRequest</code> resources for the patient in context. The calculator
+    uses whatever medication requests it is given to calculate a total MME for a point-in-time. The calculator
+    does not attempt to do any filtering of the medication requests it is given, that logic is the responsibility
+    of the caller, so a production usage would of course include filtering to determine active medication requests.
+  </p>
+
+  <p>
+    The result of the <code>TotalMME</code> expression is then a CQL <a href="https://cql.hl7.org/09-b-cqlreference.html#quantity"><code>Quantity</code></a> value, with
+    units of <code>{MME}/d</code>, representing the combined Milligram Morphine Equivalent value of the input prescriptions.
+  </p>
+
+  <p>
+    To use the MMECalculator in this way, declare this implementation guide as a dependency using the <code>dependsOn</code>
+    element of the <code>ImplementationGuide</code> resource:
+  </p>
+
+  <code><pre>&lt;dependsOn&gt;
+  &lt;packageId value=&quot;fhir.cdc.opioid-mme-r4&quot;/&gt;
+  &lt;version value=&quot;dev&quot;/&gt;
+&lt;/dependsOn&gt;</pre></code>
+
+  <div class="info">
+    <p>
+      Note the use of the <code>dev</code> value for version. This value indicates that
+      the version to be used is available locally. Until the Opioid MME calculator is published
+      in a permanent site, this is the approach that must be taken because the publication tooling
+      has no way to look up the required package listing.
+    </p>
+  </div>
+
+  <a name="tests"> </a>
+  <h3>Tests</h3>
+
+  <p>
+    To validate the functionality of the MME Calculator, this implementation guide includes test
+    cases for a representative set of opioids for both the core calculator, as well as the FHIR R4
+    calculator:
+  </p>
+
+  <ul>
+    <!--<li><b><a href="Library-OMTKDataTests.html">OMTKDataTests</a></b> - Tests of the DrugIngredient Data.</li>-->
+    <li><b><a href="Library-OMTKLogicTests.html">OMTKLogicTests</a></b> - Tests for the core MME calculator</li>
+    <li><b><a href="Library-MMECalculatorTests.html">MMECalculatorTests</a></b> - Tests the FHIR r4 calculator</li>
+  </ul>
+
+  <p>
+    The core calculator tests are expressed in pure CQL as expressions with expected result values. For example:
+  </p>
+
+  <pre><code>// 100 mg X (60 tablets/30 days) X 0.4 = 80 MME/day
+  define TestDrug_Tapentadol: {
+    rxNormCode: Code '1148797' from OMTKLogic.RXNORM display '12 HR tapentadol 100 MG Extended Release Oral Tablet',
+    doseQuantity: 1 '{tab}',
+    dosesPerDay: 2.0,
+    mme: 80 '{MME}/d'
+  }</code></pre>
+
+  <p>
+    This test indicates that for the drug '12 HR tapentadol 100 MG Extended Release Oral Tablet',
+    prescribed at 2 tablets per day, the expected result is 80 '{MME}/d'.
+  </p>
+
+  <p>
+    See the CQL content of the <a href="Library-OMTKLogicTests.html#cql-content">OMTKLogicTests</a> library
+    for a complete description of the tests.
+  </p>
+
+  <p>
+    Tests for the FHIR R4 MME calculator involve test MedicationRequest resources, contained in the <code>tests</code> folder
+    of the source for this implementation guide:
+  </p>
+
+  <pre><code>input
+  |-- tests
+        |-- MMECalculatorTests // This folder is the same name as the library under test
+              |-- patient-mme-greater-than-fifty // Folders at this level are named the same as the id of the patient under test
+                    |-- Patient // Folders at this level are the name of the resource type in the test
+                          |-- patient-mme-greater-than-fifty.json // The patient resource as a JSON file
+                    |-- MedicationRequest
+                          |-- example-rec-05-mme-greater-than-fifty-context.json // The medication request resource as a JSON file
+              |-- patient-mme-less-than-fifty
+                    |-- Patient
+                    |-- MedicationRequest
+                    |-- ...
+              |-- ... // more test cases can be added by adding to this list</code></pre>
+
+  <a name="references"> </a>
+  <h3>References and Disclaimers</h3>
+
+  <p>This product uses publicly available data courtesy of the U.S. National Library of Medicine (NLM),
+    National Institutes of Health, Department of Health and Human Services; NLM is not responsible for
+    the product and does not endorse or recommend this or any other product.</p>
+
+  <p>Nelson SJ, Zeng K, Kilbourne J, Powell T, Moore R. Normalized names for clinical drugs: RxNorm at 6 years.<br/>
+  J Am Med Inform Assoc. 2011 Jul-Aug;18(4)441-8. doi: 10.1136/amiajnl-2011-000116.<br/>
+  Epub 2011 Apr 21. PubMed PMID: 21515544; PubMed Central PMCID: PMC3128404.<br/>
+  <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3128404/">Full text</a></p>
+
+  <p>This product includes all or a portion of the UCUM table, UCUM codes, and UCUM definitions or is derived from it,
+    subject to a license from Regenstrief Institute, Inc. and The UCUM Organization. Your use of the UCUM table,
+    UCUM codes, UCUM definitions also is subject to this license, a copy of which is available at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.
+    The current complete UCUM table, UCUM Specification are available for download at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.
+    The UCUM table and UCUM codes are copyright © 1995-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization.
+    All rights reserved.</p>
+
+  <p>THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDED "AS IS." ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+
+  <p>National Center for Injury Prevention and Control. CDC compilation of benzodiazepines, muscle relaxants,
+    stimulants, zolpidem, and opioid analgesics with oral morphine milligram equivalent conversion factors, 2016 version.
+    Atlanta, GA: Centers for Disease Control and Prevention; 2016. Available at <a href="http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf">http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf</a>.</p>
+
+  <p>NOTE: The above link is known to be out-of-date, the contents of this calculator are based on the 2016 version of that publication. It has since been updated with the 2018 guidance, but this calculator is still based on the 2016 guidance at this point.</p>
+
 </div>

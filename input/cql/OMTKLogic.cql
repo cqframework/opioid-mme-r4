@@ -1,10 +1,19 @@
 library OMTKLogic version '3.0.0'
 
 /*
+This library provides functionality for calculating Milligram Morphine
+Equivalents (MME) for opioid medications, as described in the CDC Opioid
+Prescribing Guideline.
+
+The functionality in this library was developed based on the Java-based
+implementation described [here](http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-3-core-logic-processing-java-class),
+as well as the MME conversion calculation published as part of the CDC Opioid
+Prescribing Guideline.
+
 This version of the OMTKLogic library uses the OMTKData library as the
 source for drug ingredient and strength information, rather than the
 OMTK data source. This library has no external dependencies and so
-should be able to run in an environment that supports pure CQL.
+can run in an environment that supports pure CQL.
 
 NOTE: For performance, all terminology comparisons in this library use
 direct integer comparison of the RxNorm codes.

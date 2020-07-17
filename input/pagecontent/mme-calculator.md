@@ -13,7 +13,7 @@ The base MME calculator uses ingredient data to determine the daily dose from th
 3. If the dose quantity is in volume units (e.g. mL), the daily dose = Doses Per Day * Dose Quantity * Strength, with the Numerator Strength Unit (e.g. remove /mL)
 4. Otherwise, the dose quantity is in terms of tablets or sprays, the daily dose = Doses Per Day * DoseQuantity * Strength the Numerator Strength Unit (e.g. remove /{actuat})
 
-This results in a set of ingredients with {MME}/d values for each opioidic component ingredient of the drug, and these values are multiplied by the appropriate conversion factor, as described by the [Conversion Factor](https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf) information provided as part of the CDC Opioid Prescribing Guideline. These values are then added together to determine the {MME}/d for the specific drug.
+This results in a set of ingredients with {MME}/d values for each opioid-related component ingredient of the drug, and these values are multiplied by the appropriate conversion factor, as described by the [Conversion Factor](https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf) information provided as part of the CDC Opioid Prescribing Guideline. These values are then added together to determine the {MME}/d for the specific drug.
 
 Determining MME at a point in time then requires consideration of all active opioid medications at that point. For each medication, a dose quantity, and a doses per day is determined. For FHIR R4, this done with the Prescriptions function to normalize from FHIR MedicationRequest resources, making use of the following elements:
 * medication (as a CodeableConcept)

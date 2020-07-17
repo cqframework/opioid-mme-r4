@@ -38,6 +38,11 @@
         <title value="Home Page"/>
         <generation value="html"/>
       </page>
+      <page>
+        <nameUrl value="mme-calculator.html"/>
+        <title value="MME Calculator"/>
+        <generation value="markdown"/>
+      </page>
     </page>
     <!--  -->
     <!-- copyright year is a mandatory parameter -->

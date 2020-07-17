@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "MMECalculatorTests",
+  "version": "3.0.0",
+  "name": "MMECalculatorTests",
+  "title": "Tests for the Milligram Morphine Equivalent (MME) Calculator for FHIR R4",
+  "status": "active",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "description": "This library contains tests to validate the functionality of the FHIR R4 MME calculator",
+  "content": [
+    {
+      "id": "ig-loader-MMECalculatorTests.cql"
+    }
+  ]
+}

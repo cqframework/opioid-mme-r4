@@ -1,0 +1,23 @@
+{
+  "resourceType": "Library",
+  "id": "OMTKDataTests",
+  "version": "3.0.0",
+  "name": "OMTKDataTests",
+  "title": "Tests for the Opioid Management Terminology Knowledge Data Library",
+  "status": "active",
+  "experimental": true,
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "logic-library"
+      }
+    ]
+  },
+  "description": "This library contains tests of the OMTKData library",
+  "content": [
+    {
+      "id": "ig-loader-OMTKDataTests.cql"
+    }
+  ]
+}
