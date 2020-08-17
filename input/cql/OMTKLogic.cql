@@ -239,6 +239,20 @@ define function GetIngredients(rxNormCode Code):
     }
 
 /*
+Returns the display of the given concept, if present, otherwise, looks up medication
+names for any RxNormCodes within the concept using the GetMedicationName function
+*/
+define function GetMedicationConceptName(concept Concept):
+  if concept.display is null then
+    First(
+      (concept.codes) C
+        where C.system = 'http://www.nlm.nih.gov/research/umls/rxnorm'
+        return GetMedicationName(C)
+    )
+  else
+    concept.display
+
+/*
 Returns the display of the given code, if present, otherwise looks it up from the OMTK data
 */
 define function GetMedicationName(rxNormCode Code):
