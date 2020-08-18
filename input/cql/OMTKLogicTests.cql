@@ -138,8 +138,8 @@ define TestGetConversionFactor_Message: OMTKLogic.GetConversionFactor(null, 10 '
 
 //define function EnsureMicrogramQuantity(strength Quantity):
 define TestEnsureMicrogramQuantityNormal: OMTKLogic.EnsureMicrogramQuantity(10 'mg') = 10 'mg'
-define TestEnsureMicrogramQuantityMicrogram: OMTKLogic.EnsureMicrogramQuantity(0.001 'mg') = 1 'mcg'
-define TestEnsureMicrogramQuantityMicrogramPerML: OMTKLogic.EnsureMicrogramQuantity(0.05 'mg/mL') = 50 'mcg/mL'
+define TestEnsureMicrogramQuantityMicrogram: OMTKLogic.EnsureMicrogramQuantity(0.001 'mg') = 1 'ug'
+define TestEnsureMicrogramQuantityMicrogramPerML: OMTKLogic.EnsureMicrogramQuantity(0.05 'mg/mL') = 50 'ug/mL'
 
 //define function GetIngredients(rxNormCode Code):
 //GetIngredients:
@@ -209,8 +209,8 @@ define TestDrugs: {
 }
 
 //define function StripPer(unit String):
-define TestStripPer_MCGPerH: OMTKLogic.StripPer('mcg/h') = 'mcg'
-define TestStripPer_MCGPerTab: OMTKLogic.StripPer('mg/{tab}') = 'mg'
+define TestStripPer_UGPerH: OMTKLogic.StripPer('ug/h') = 'ug'
+define TestStripPer_MGPerTab: OMTKLogic.StripPer('mg/{tab}') = 'mg'
 
 //define function GetDailyDose(ingredientCode Code, strength Quantity, doseFormCode Code, doseQuantity Quantity, dosesPerDay Decimal):
 define TestGetDailyDose:
