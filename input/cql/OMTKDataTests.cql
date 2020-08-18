@@ -6,3 +6,7 @@ define TestDoseForms:
   OMTKData.DrugIngredients DI
     where DI.ingredientCode = 4337
     return { doseFormCode: DI.doseFormCode, doseFormName: DI.doseFormName }
+
+define TestUnits:
+  OMTKData.DrugIngredients DI
+    return DI.strengthUnit
