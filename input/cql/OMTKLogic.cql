@@ -122,13 +122,13 @@ Tramadol	0.1
 */
 define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, doseFormCode Code):
   case ToInteger(ingredientCode.code)
-    when 161 then 0  /*	Acetaminophen */
+    when 161 then 0 /* Acetaminophen */
     when 1191 then 0 /*	Aspirin */
     when 1223 then 0 /*	Atropine */
     when 1767 then 0 /*	Brompheniramine */
     when 1819 then ( /*	Buprenorphine */
       case
-        when ToInteger(doseFormCode.code) = 316987 then 12.6 /* Transdermal system */
+        when ToInteger(doseFormCode.code) = 316987 then 12600 /* Transdermal system */
         else 30 /* Tablet or Film (or Film in MCG) */
       end
     )
@@ -142,10 +142,10 @@ define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, dos
     when 3498 then 0 /*	Diphenhydramine */
     when 4337 then ( /*	Fentanyl */
       case
-        when ToInteger(doseFormCode.code) in { 970789, 317007, 316992 } then 0.13 /* Buccal Tablet, Sublingual Tablet, Oral Lozenge */
-        when ToInteger(doseFormCode.code) = 858080 then 0.18 /* Buccal Film */
-        when ToInteger(doseFormCode.code) in { 126542, 346163, 1797831 } then 0.16 /* Nasal Spray, Mucosal Spray, Metered Dose Nasal Spray */
-        when ToInteger(doseFormCode.code) = 316987 then 2.4 /* Transdermal system */
+        when ToInteger(doseFormCode.code) in { 970789, 317007, 316992 } then 130 /* Buccal Tablet, Sublingual Tablet, Oral Lozenge */
+        when ToInteger(doseFormCode.code) = 858080 then 180 /* Buccal Film */
+        when ToInteger(doseFormCode.code) in { 126542, 346163, 1797831 } then 160 /* Nasal Spray, Mucosal Spray, Metered Dose Nasal Spray */
+        when ToInteger(doseFormCode.code) = 316987 then 7200 /* Transdermal system */
         else Message(null, true, 'OMTKLogic.GetConversionFactor.UnknownDoseForm', ErrorLevel, 'Unknown dose form code ' & doseFormCode.code)
       end
     )
@@ -190,16 +190,6 @@ define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, dos
     else Message(null, true, 'OMTKLogic.GetConversionFactor.UnknownIngredientCode', ErrorLevel, 'Unknown ingredient code: ' & ingredientCode.code)
   end
 
-define function EnsureMicrogramQuantity(strength Quantity):
-  // TODO: This should be possible with just quantity arithmetic
-  if strength.value < 0.1 and (PositionOf('mg', strength.unit) = 0) then
-    Quantity {
-      value: strength.value * 1000,
-      unit: 'ug' & Substring(strength.unit, 2)
-    }
-  else
-    strength
-
 /*
   Returns the opioid ingredients and their strengths that
   make up the drug identified by the given rxNormCode as a list of tuples:
@@ -230,12 +220,10 @@ define function GetIngredients(rxNormCode Code):
       rxNormCode: Code { code: ToString(DI.drugCode), system: 'http://www.nlm.nih.gov/research/umls/rxnorm', display: DI.drugName },
       doseFormCode: Code { code: ToString(DI.doseFormCode), system: 'http://www.nlm.nih.gov/research/umls/rxnorm', display: DI.doseFormName },
       ingredientCode: Code { code: ToString(DI.ingredientCode), system: 'http://www.nlm.nih.gov/research/umls/rxnorm', display: DI.ingredientName },
-      strength: EnsureMicrogramQuantity(
-          Quantity {
-            value: DI.strengthValue,
-            unit: ToUCUM(DI.strengthUnit)
-          }
-        )
+      strength: Quantity {
+        value: DI.strengthValue,
+        unit: ToUCUM(DI.strengthUnit)
+      }
     }
 
 /*
@@ -389,7 +377,7 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
       return
         Ingredients I
           let
-            adjustedDoseQuantity: EnsureMicrogramQuantity(M.doseQuantity),
+            adjustedDoseQuantity: M.doseQuantity,
             dailyDose: GetDailyDose(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay),
             dailyDoseDescription: GetDailyDoseDescription(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay, dailyDose),
             factor: GetConversionFactor(I.ingredientCode, dailyDose, I.doseFormCode)
@@ -404,7 +392,7 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
             dailyDoseDescription: dailyDoseDescription & (' * factor: ' + ToString(factor)),
             conversionFactor: factor,
             mme: Quantity(
-              dailyDose.value * factor,
+              Round(dailyDose.value * factor),
               '{MME}/d'
             )
           }
