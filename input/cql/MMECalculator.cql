@@ -66,7 +66,6 @@ FHIR MedicationRequest resources.
 define function Prescriptions(Orders List<MedicationRequest>):
   Orders O
     let
-      // NOTE: Assuming medication is specified as a CodeableConcept with a single RxNorm code
       rxNormCode: OMTKLogic.GetMedicationCode(O.medication),
       medicationName: OMTKLogic.GetMedicationName(rxNormCode),
       // NOTE: Assuming a single dosage instruction element
@@ -136,5 +135,5 @@ medications in the given list (i.e. no additional filtering for status is perfor
 define function TotalMME(prescriptions List<MedicationRequest>):
   OMTKLogic.Quantity(
     Sum((MME(prescriptions)) M return M.mme.value),
-    'mg/d'
+    '{MME}/d'
   )

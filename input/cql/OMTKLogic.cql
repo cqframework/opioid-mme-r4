@@ -10,6 +10,15 @@ implementation described [here](http://build.fhir.org/ig/cqframework/opioid-cds-
 as well as the MME conversion calculation published as part of the CDC Opioid
 Prescribing Guideline.
 
+Note that the logic in this library (and specifically the conversion factors captured here)
+are based on the 2016 version of the publication available from the CDC here:
+https://www.cdc.gov/drugoverdose/modules/data-files.html
+
+National Center for Injury Prevention and Control. CDC compilation of benzodiazepines,
+muscle relaxants, stimulants, zolpidem, and opioid analgesics with oral morphine milligram
+equivalent conversion factors, 2018 version. Atlanta, GA: Centers for Disease Control
+and Prevention; 2018. Available at https://www.cdc.gov/drugoverdose/resources/data.html
+
 This version of the OMTKLogic library uses the OMTKData library as the
 source for drug ingredient and strength information, rather than the
 OMTK data source. This library has no external dependencies and so
@@ -112,7 +121,7 @@ Methadone	3
   41-60 mg/d 10
   61-80 mg/d 12
 Morphine	1
-Opium	1 // NOTE: Not present as an ingredient in the RxNorm data
+Opium	1
 Oxycodone	1.5
 Oxymorphone	3
 Pentazocine	0.37
@@ -167,6 +176,7 @@ define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, dos
     when 7052 then 1 /*	Morphine */
     when 7242 then 0 /*	Naloxone */
     when 7243 then 0 /*	Naltrexone */
+    when 7676 then 1 /* Opium */
     when 7804 then 1.5 /*	Oxycodone */
     when 7814 then 3 /*	Oxymorphone */
     when 8001 then 0.37 /*	Pentazocine */
@@ -389,10 +399,10 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
             ingredientCode: I.ingredientCode,
             strength: I.strength,
             dailyDose: dailyDose,
-            dailyDoseDescription: dailyDoseDescription & (' * factor: ' + ToString(factor)),
+            dailyDoseDescription: dailyDoseDescription & (' * factor: ' + Coalesce(ToString(factor), 'No conversion factor available')),
             conversionFactor: factor,
             mme: Quantity(
-              Round(dailyDose.value * factor),
+              Round(dailyDose.value * factor, 1),
               '{MME}/d'
             )
           }
