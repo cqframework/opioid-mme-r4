@@ -4,8 +4,8 @@ settings and for different purposes. These conversion factors are configurable
 using a CodeSystem supplement. This implementation guide contains two conversion
 factor tables:
 
-* CDCMMEClinicalConversionFactors
-* CDCMMEResearchConversionFactors
+* [CDCMMEClinicalConversionFactors](CodeSystem-CDCMMEClinicalConversionFactors.html)
+* [CDCMMEResearchConversionFactors](CodeSystem-CDCMMEResearchConversionFactors.html)
 
 The Clinical Conversion Factors table uses values from CDC guidance here:
 https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf
