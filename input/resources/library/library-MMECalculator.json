@@ -22,7 +22,7 @@
   } ],
   "version": "3.0.0",
   "name": "MMECalculator",
-  "title": "Milligram Morphine Equivalent (MME) Calculator for FHIR R4",
+  "title": "Morphine Milligram Equivalent (MME) Calculator for FHIR R4",
   "status": "active",
   "experimental": false,
   "type": {
@@ -59,7 +59,7 @@
       } ]
     }
   } ],
-  "lastReviewDate": "2020-07-15",
+  "lastReviewDate": "2020-09-26",
   "relatedArtifact": [ {
     "type": "depends-on",
     "resource": "http://hl7.org/fhir/Library/FHIR-ModelInfo|4.0.1"

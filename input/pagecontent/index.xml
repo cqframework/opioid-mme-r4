@@ -43,14 +43,19 @@
     For a more detailed description of the MME calculator, refer to the <a href="mme-calculator.html">MME Calculator</a> page in this guide.
   </p>
 
+  <p>
+    For a detailed description of configuration of conversion factors, refer to the <a href="conversion-factors.html">Conversion Factors</a> page in this guide.
+  </p>
+
   <a name="contents"> </a>
   <h3>Contents</h3>
 
   <p>
-    The MME calculation logic is contained within three libraries:
+    The MME calculation logic is contained within four libraries:
   </p>
 
   <ul>
+    <li><b><a href="Library-ConversionFactors.html">ConversionFactors</a></b> - Logic to determine appropriate conversion factor for a given ingredient, dose form, and dose quantity.</li>
     <li><b><a href="Library-OMTKData.html">OMTKData</a></b> - The RxNorm drug ingredient data required to determine the strength of individual ingredients within combination drugs.</li>
     <li><b><a href="Library-OMTKLogic.html">OMTKLogic</a></b> - The core MME calculator, expressed in pure CQL and independent of any particular data model</li>
     <li><b><a href="Library-MMECalculator.html">MMECalculator</a></b> - Logic to apply the MME calculator to FHIR R4 MedicationRequest resources</li>

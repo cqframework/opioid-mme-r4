@@ -31,7 +31,7 @@
       "code": "logic-library"
     } ]
   },
-  "description": "This library provides functionality for calculating Milligram Morphine Equivalents (MME) for opioid medications, as described in the CDC Opioid Prescribing Guideline.",
+  "description": "This library provides functionality for calculating Morphine Milligram Equivalents (MME) for opioid medications, as described in the CDC Opioid Prescribing Guideline.",
   "useContext": [ {
     "code": {
       "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
@@ -60,7 +60,7 @@
     }
   } ],
   "copyright": "This product uses publicly available data courtesy of the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.",
-  "lastReviewDate": "2020-07-14",
+  "lastReviewDate": "2020-09-26",
   "topic": [ {
     "text": "Opioid Prescribing"
   } ],

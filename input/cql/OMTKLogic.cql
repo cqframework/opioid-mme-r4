@@ -1,7 +1,7 @@
 library OMTKLogic version '3.0.0'
 
 /*
-This library provides functionality for calculating Milligram Morphine
+This library provides functionality for calculating Morphine Milligram
 Equivalents (MME) for opioid medications, as described in the CDC Opioid
 Prescribing Guideline.
 
@@ -38,13 +38,13 @@ Epub 2011 Apr 21. PubMed PMID: 21515544; PubMed Central PMCID: PMC3128404.
 */
 
 include OMTKData version '3.0.0' called OMTKData
+include ConversionFactors version '3.0.0' called ConversionFactors
 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
 parameter ErrorLevel String default 'Warning'
 
-/*
-  Normalizes the input units to UCUM units
+/*  Normalizes the input units to UCUM units
 
   The values listed here are the only ones currently present in the OMTK data
 
@@ -87,117 +87,6 @@ define function ToDaily(frequency Integer, period Quantity):
     when 'months' then frequency * (24.0 / period.value) / (24 * 30) /* assuming 30 days in month */
     when 'years' then frequency * (24.0 / period.value) / (24 * 365) /* assuming 365 days in year */
     else Message(null, true, 'OMTKLogic.ToDaily.UnknownUnit', ErrorLevel, 'Unknown unit ' & period.unit)
-  end
-
-/*
-  Returns the conversion factor for the given ingredient
-
-CDC Guidance:
-https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf
-https://www.cdc.gov/drugoverdose/modules/data-files.html
-
-CMS Guidance:
-https://www.cms.gov/Medicare/Prescription-Drug-Coverage/PrescriptionDrugCovContra/Downloads/Oral-MME-CFs-vFeb-2018.pdf
-
-Opioid (strength in mg except where noted)	MME Conversion Factor*
-Buprenorphine, transdermal patch (MCG/HR)	12.6
-Buprenorphine, tablet or film	30
-Buprenorphine, film (MCG)	0.03
-Butorphanol	7
-Codeine	0.15
-Dihydrocodeine	0.25
-Fentanyl, buccal/SL tabet or lozenge/troche (MCG)	0.13
-Fentanyl, film or oral spray (MCG)	0.18
-Fentanyl, nasal spray (MCG)	0.16
-Fentanyl, transdermal patch (MCG/HR)	2.4
-Hydrocodone	1
-Hydromorphone	4
-Levomethadyl acetate	8
-Levorphanol tartrate	11
-Meperidine 	0.1
-Methadone	3
-  1-20 mg/d 4
-  21-40 mg/d 8
-  41-60 mg/d 10
-  61-80 mg/d 12
-Morphine	1
-Opium	1
-Oxycodone	1.5
-Oxymorphone	3
-Pentazocine	0.37
-Tapentadol	0.4
-Tramadol	0.1
-
-*/
-define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, doseFormCode Code):
-  case ToInteger(ingredientCode.code)
-    when 161 then 0 /* Acetaminophen */
-    when 1191 then 0 /*	Aspirin */
-    when 1223 then 0 /*	Atropine */
-    when 1767 then 0 /*	Brompheniramine */
-    when 1819 then ( /*	Buprenorphine */
-      case
-        when ToInteger(doseFormCode.code) = 316987 then 12600 /* Transdermal system */
-        else 30 /* Tablet or Film (or Film in MCG) */
-      end
-    )
-    when 1841 then 7 /*	Butorphanol */
-    when 1886 then 0 /*	Caffeine */
-    when 2101 then 0 /*	Carisoprodol */
-    when 2354 then 0 /*	chlorcyclizine */
-    when 2400 then 0 /*	Chlorpheniramine */
-    when 2670 then 0.15 /*	Codeine */
-    when 3423 then 4 /*	Hydromorphone */
-    when 3498 then 0 /*	Diphenhydramine */
-    when 4337 then ( /*	Fentanyl */
-      case
-        when ToInteger(doseFormCode.code) in { 970789, 317007, 316992 } then 130 /* Buccal Tablet, Sublingual Tablet, Oral Lozenge */
-        when ToInteger(doseFormCode.code) = 858080 then 180 /* Buccal Film */
-        when ToInteger(doseFormCode.code) in { 126542, 346163, 1797831 } then 160 /* Nasal Spray, Mucosal Spray, Metered Dose Nasal Spray */
-        when ToInteger(doseFormCode.code) = 316987 then 7200 /* Transdermal system */
-        else Message(null, true, 'OMTKLogic.GetConversionFactor.UnknownDoseForm', ErrorLevel, 'Unknown dose form code ' & doseFormCode.code)
-      end
-    )
-    when 5032 then 0 /*	Guaifenesin */
-    when 5489 then 1 /*	Hydrocodone */
-    when 5640 then 0 /*	Ibuprofen */
-    when 6102 then 0 /*	Kaolin */
-    when 6378 then 11 /*	Levorphanol (NOTE: Given as Levorphanol tartrate in the CDC conversion table) */
-    when 6754 then 0.1 /*	Meperidine */
-    when 6813 then ( /*	Methadone */
-      case
-        when dailyDose.value between 1 and 20 then 4
-        when dailyDose.value between 21 and 40 then 8
-        when dailyDose.value between 41 and 60 then 10
-        when dailyDose.value >= 61 then 12
-        else Message(null, dailyDose.value < 1, 'OMTKLogic.GetConversionFactor.DailyDoseLessThanOne', ErrorLevel, 'Daily dose less than 1')
-      end
-    )
-    when 7052 then 1 /*	Morphine */
-    when 7242 then 0 /*	Naloxone */
-    when 7243 then 0 /*	Naltrexone */
-    when 7676 then 1 /* Opium */
-    when 7804 then 1.5 /*	Oxycodone */
-    when 7814 then 3 /*	Oxymorphone */
-    when 8001 then 0.37 /*	Pentazocine */
-    when 8163 then 0 /*	Phenylephrine */
-    when 8175 then 0 /*	Phenylpropanolamine */
-    when 8745 then 0 /*	Promethazine */
-    when 8896 then 0 /*	Pseudoephedrine */
-    when 9009 then 0 /*	Pyrilamine */
-    when 10689 then 0.1 /*	Tramadol */
-    when 10849 then 0 /*	Triprolidine */
-    when 19759 then 0 /*	bromodiphenhydramine */
-    when 19860 then 0 /*	butalbital */
-    when 22696 then 0 /*	dexbrompheniramine */
-    when 22697 then 0 /*	dexchlorpheniramine */
-    when 23088 then 0.25 /*	dihydrocodeine */
-    when 27084 then 0 /*	homatropine */
-    when 35780 then 0 /*	ropivacaine */
-    when 237005 then 8 /*	Levomethadyl (NOTE: given as Levomethadyl acetate in the CDC conversion table) */
-    when 636827 then 0 /*	guaiacolsulfonate */
-    when 787390 then 0.4 /*	tapentadol */
-    else Message(null, true, 'OMTKLogic.GetConversionFactor.UnknownIngredientCode', ErrorLevel, 'Unknown ingredient code: ' & ingredientCode.code)
   end
 
 /*
@@ -390,7 +279,7 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
             adjustedDoseQuantity: M.doseQuantity,
             dailyDose: GetDailyDose(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay),
             dailyDoseDescription: GetDailyDoseDescription(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay, dailyDose),
-            factor: GetConversionFactor(I.ingredientCode, dailyDose, I.doseFormCode)
+            factor: ConversionFactors.GetConversionFactor(I.ingredientCode, dailyDose, I.doseFormCode)
           return {
             rxNormCode: M.rxNormCode,
             doseFormCode: I.doseFormCode,

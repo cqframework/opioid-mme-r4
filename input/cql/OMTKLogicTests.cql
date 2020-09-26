@@ -1,69 +1,6 @@
 library OMTKLogicTests version '3.0.0'
+using FHIR version '4.0.1'
 include OMTKLogic version '3.0.0'
-
-// Ingredient Codes
-code acetaminophen: '161' from OMTKLogic.RXNORM display 'acetaminophen'
-code aspirin: '1191' from OMTKLogic.RXNORM display 'aspirin'
-code atropine: '1223' from OMTKLogic.RXNORM display 'atropine'
-code bromodiphenhydramine: '19759' from OMTKLogic.RXNORM display 'bromodiphenhydramine'
-code brompheniramine: '1767' from OMTKLogic.RXNORM display 'brompheniramine'
-code buprenorphine: '1819' from OMTKLogic.RXNORM display 'buprenorphine'
-code butalbital: '19860' from OMTKLogic.RXNORM display 'butalbital'
-code butorphanol: '1841' from OMTKLogic.RXNORM display 'butorphanol'
-code caffeine: '1886' from OMTKLogic.RXNORM display 'caffeine'
-code carisoprodol: '2101' from OMTKLogic.RXNORM display 'carisoprodol'
-code chlorcyclizine: '2354' from OMTKLogic.RXNORM display 'chlorcyclizine'
-code chlorpheniramine: '2400' from OMTKLogic.RXNORM display 'chlorpheniramine'
-code codeine: '2670' from OMTKLogic.RXNORM display 'codeine'
-code dexbrompheniramine: '22696' from OMTKLogic.RXNORM display 'dexbrompheniramine'
-code dexchlorpheniramine: '22697' from OMTKLogic.RXNORM display 'dexchlorpheniramine'
-code dihydrocodeine: '23088' from OMTKLogic.RXNORM display 'dihydrocodeine'
-code diphenhydramine: '3498' from OMTKLogic.RXNORM display 'diphenhydramine'
-code fentanyl: '4337' from OMTKLogic.RXNORM display 'fentanyl'
-code guaiacolsulfonate: '636827' from OMTKLogic.RXNORM display 'guaiacolsulfonate'
-code guaifenesin: '5032' from OMTKLogic.RXNORM display 'guaifenesin'
-code homatropine: '27084' from OMTKLogic.RXNORM display 'homatropine'
-code hydrocodone: '5489' from OMTKLogic.RXNORM display 'hydrocodone'
-code hydromorphone: '3423' from OMTKLogic.RXNORM display 'hydromorphone'
-code ibuprofen: '5640' from OMTKLogic.RXNORM display 'ibuprofen'
-code kaolin: '6102' from OMTKLogic.RXNORM display 'kaolin'
-code levomethadyl: '237005' from OMTKLogic.RXNORM display 'levomethadyl'
-code levorphanol: '6378' from OMTKLogic.RXNORM display 'levorphanol'
-code meperidine: '6754' from OMTKLogic.RXNORM display 'levorphanol'
-code methadone: '6813' from OMTKLogic.RXNORM display 'methadone'
-code morphine: '7052' from OMTKLogic.RXNORM display 'morphine'
-code naloxone: '7242' from OMTKLogic.RXNORM display 'naloxone'
-code naltrexone: '7243' from OMTKLogic.RXNORM display 'naltrexone'
-code oxycodone: '7804' from OMTKLogic.RXNORM display 'oxycodone'
-code oxymorphone: '7814' from OMTKLogic.RXNORM display 'oxymorphone'
-code pentazocine: '8001' from OMTKLogic.RXNORM display 'pentazocine'
-code phenylephrine: '8163' from OMTKLogic.RXNORM display 'phenylephrine'
-code phenylpropanolamine: '8175' from OMTKLogic.RXNORM display 'phenylpropanolamine'
-code promethazine: '8745' from OMTKLogic.RXNORM display 'promethazine'
-code pseudoephedrine: '8896' from OMTKLogic.RXNORM display 'pseudoephedrine'
-code pyrilamine: '9009' from OMTKLogic.RXNORM display 'pyrilamine'
-code ropivacaine: '35780' from OMTKLogic.RXNORM display 'ropivacaine'
-code tapentadol: '787390' from OMTKLogic.RXNORM display 'tapentadol'
-code tramadol: '10689' from OMTKLogic.RXNORM display 'tramadol'
-code triprolidine: '10849' from OMTKLogic.RXNORM display 'triprolidine'
-
-// Dose Form Codes
-code "Transdermal System": '316987' from OMTKLogic.RXNORM display 'Transdermal System'
-code "Oral Tablet": '317541' from OMTKLogic.RXNORM display 'Oral Tablet'
-code "Buccal Tablet": '970789' from OMTKLogic.RXNORM display 'Buccal Tablet'
-code "Chewable Tablet": '91058' from OMTKLogic.RXNORM display 'Chewable Tablet'
-code "Sublingual Tablet": '317007' from OMTKLogic.RXNORM display 'Sublingual Tablet'
-code "Oral Lozenge": '316992' from OMTKLogic.RXNORM display 'Oral Lozenge'
-code "Oral Capsule": '316965' from OMTKLogic.RXNORM display 'Oral Capsule'
-code "Buccal Film": '858080' from OMTKLogic.RXNORM display 'Buccal Film'
-code "Nasal Spray": '126542' from OMTKLogic.RXNORM display 'Nasal Spray'
-code "Mucosal Spray": '346163' from OMTKLogic.RXNORM display 'Mucosal Spray'
-code "Metered Dose Nasal Spray": '1797831' from OMTKLogic.RXNORM display 'Metered Dose Nasal Spray'
-code "Topical Ointment": '316985' from OMTKLogic.RXNORM display 'Topical Ointment'
-code "Extended Release Oral Capsule": '316943' from OMTKLogic.RXNORM display 'Extended Release Oral Capsule'
-code "Extended Release Oral Tablet": '316946' from OMTKLogic.RXNORM display 'Extended Release Oral Tablet'
-code "Oral Solution": '316968' from OMTKLogic.RXNORM display 'Oral Solution'
-code "Injection": '1649574' from OMTKLogic.RXNORM display 'Injection'
 
 // define function ToUCUM(unit String):
 define TestToUCUM_MG: OMTKLogic.ToUCUM('MG') = 'mg'
@@ -81,60 +18,6 @@ define TestToDaily_wk: OMTKLogic.ToDaily(2, 1 'wk') = 0.28571428
 define TestToDaily_mo: OMTKLogic.ToDaily(10, 1 'mo') = 0.33333333
 define TestToDaily_a: OMTKLogic.ToDaily(10, 1 'a') = 0.02739726
 define TestToDaily_unknown: OMTKLogic.ToDaily(10, 1 'x') is null
-
-//define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, doseFormCode Code):
-define TestGetConversionFactor_161: OMTKLogic.GetConversionFactor(acetaminophen, 200 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_1191: OMTKLogic.GetConversionFactor(aspirin, 200 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_1223: OMTKLogic.GetConversionFactor(atropine, 0.6 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_1767: OMTKLogic.GetConversionFactor(brompheniramine, 1 'mg', "Chewable Tablet") = 0
-define TestGetConversionFactor_1819: OMTKLogic.GetConversionFactor(buprenorphine, 0.02 'mg/h', "Transdermal System") = 12600
-define TestGetConversionFactor_1819_Film: OMTKLogic.GetConversionFactor(buprenorphine, 0.075 'mg', "Buccal Film") = 30
-define TestGetConversionFactor_1841: OMTKLogic.GetConversionFactor(butorphanol, 1 'mg/{actuat}', "Metered Dose Nasal Spray") = 7
-define TestGetConversionFactor_1886: OMTKLogic.GetConversionFactor(caffeine, 100 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_2101: OMTKLogic.GetConversionFactor(carisoprodol, 250 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_2354: OMTKLogic.GetConversionFactor(chlorcyclizine, 25 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_2400: OMTKLogic.GetConversionFactor(chlorpheniramine, 0.5 'mg', "Chewable Tablet") = 0
-define TestGetConversionFactor_2670: OMTKLogic.GetConversionFactor(codeine, 12.5 'mg', "Oral Tablet") = 0.15
-define TestGetConversionFactor_3423: OMTKLogic.GetConversionFactor(hydromorphone, 1 'mg', "Oral Tablet") = 4
-define TestGetConversionFactor_3498: OMTKLogic.GetConversionFactor(diphenhydramine, 18.75 'mg', "Oral Capsule") = 0
-define TestGetConversionFactor_4337: OMTKLogic.GetConversionFactor(fentanyl, 0.1 'mg', "Buccal Tablet") = 130
-define TestGetConversionFactor_4337_TransdermalSystem: OMTKLogic.GetConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System") = 7200
-define TestGetConversionFactor_4337_NasalSpray: OMTKLogic.GetConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray") = 160
-define TestGetConversionFactor_4337_BuccalFilm: OMTKLogic.GetConversionFactor(fentanyl, 1.2 'mg', "Buccal Film") = 180
-define TestGetConversionFactor_5032: OMTKLogic.GetConversionFactor(guaifenesin, 100 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_5489: OMTKLogic.GetConversionFactor(hydrocodone, 10 'mg', "Oral Tablet") = 1
-define TestGetConversionFactor_5640: OMTKLogic.GetConversionFactor(ibuprofen, 100 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_6102: OMTKLogic.GetConversionFactor(kaolin, 0.145 'mg/mg', "Topical Ointment") = 0
-define TestGetConversionFactor_6378: OMTKLogic.GetConversionFactor(levorphanol, 2 'mg', "Oral Tablet") = 11
-define TestGetConversionFactor_6754: OMTKLogic.GetConversionFactor(meperidine, 100 'mg', "Oral Tablet") = 0.1
-define TestGetConversionFactor_6813: OMTKLogic.GetConversionFactor(methadone, 10 'mg', "Oral Tablet") = 4
-define TestGetConversionFactor_6813_30: OMTKLogic.GetConversionFactor(methadone, 30 'mg', "Oral Tablet") = 8
-define TestGetConversionFactor_6813_50: OMTKLogic.GetConversionFactor(methadone, 50 'mg', "Oral Tablet") = 10
-define TestGetConversionFactor_6813_70: OMTKLogic.GetConversionFactor(methadone, 70 'mg', "Oral Tablet") = 12
-define TestGetConversionFactor_7052: OMTKLogic.GetConversionFactor(morphine, 10 'mg', "Oral Tablet") = 1
-define TestGetConversionFactor_7242: OMTKLogic.GetConversionFactor(naloxone, 0.7 'mg', "Buccal Film") = 0
-define TestGetConversionFactor_7243: OMTKLogic.GetConversionFactor(naltrexone, 100 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_7804: OMTKLogic.GetConversionFactor(oxycodone, 36 'mg', "Extended Release Oral Capsule") = 1.5
-define TestGetConversionFactor_7814: OMTKLogic.GetConversionFactor(oxymorphone, 10 'mg', "Oral Tablet") = 3
-define TestGetConversionFactor_8001: OMTKLogic.GetConversionFactor(pentazocine, 50 'mg', "Oral Tablet") = 0.37
-define TestGetConversionFactor_8163: OMTKLogic.GetConversionFactor(phenylephrine, 10 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_8175: OMTKLogic.GetConversionFactor(phenylpropanolamine, 18 'mg', "Extended Release Oral Tablet") = 0
-define TestGetConversionFactor_8745: OMTKLogic.GetConversionFactor(promethazine, 10 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_8896: OMTKLogic.GetConversionFactor(pseudoephedrine, 45 'mg', "Oral Capsule") = 0
-define TestGetConversionFactor_9009: OMTKLogic.GetConversionFactor(pyrilamine, 10 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_10689: OMTKLogic.GetConversionFactor(tramadol, 100 'mg', "Oral Tablet") = 0.1
-define TestGetConversionFactor_10849: OMTKLogic.GetConversionFactor(triprolidine, 2.5 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_19759: OMTKLogic.GetConversionFactor(bromodiphenhydramine, 2.5 'mg/mL', "Oral Solution") = 0
-define TestGetConversionFactor_19860: OMTKLogic.GetConversionFactor(butalbital, 50 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_22696: OMTKLogic.GetConversionFactor(dexbrompheniramine, 1 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_22697: OMTKLogic.GetConversionFactor(dexchlorpheniramine, 2 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_23088: OMTKLogic.GetConversionFactor(dihydrocodeine, 16 'mg', "Oral Tablet") = 0.25
-define TestGetConversionFactor_27084: OMTKLogic.GetConversionFactor(homatropine, 5 'mg', "Oral Tablet") = 0
-define TestGetConversionFactor_35780: OMTKLogic.GetConversionFactor(ropivacaine, 10 'mg/mL', "Injection") = 0
-define TestGetConversionFactor_237005: OMTKLogic.GetConversionFactor(levomethadyl, 10 'mg/mL', "Oral Solution") = 8
-define TestGetConversionFactor_636827: OMTKLogic.GetConversionFactor(guaiacolsulfonate, 70 'mg/mL', "Oral Solution") = 0
-define TestGetConversionFactor_787390: OMTKLogic.GetConversionFactor(tapentadol, 50 'mg', "Oral Tablet") = 0.4
-define TestGetConversionFactor_Message: OMTKLogic.GetConversionFactor(null, 10 'mg', null) is null
 
 //define function EnsureMicrogramQuantity(strength Quantity):
 //define TestEnsureMicrogramQuantityNormal: OMTKLogic.EnsureMicrogramQuantity(10 'mg') = 10 'mg'

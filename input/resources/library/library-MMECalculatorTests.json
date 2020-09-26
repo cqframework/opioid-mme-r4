@@ -22,7 +22,7 @@
   } ],
   "version": "3.0.0",
   "name": "MMECalculatorTests",
-  "title": "Tests for the Milligram Morphine Equivalent (MME) Calculator for FHIR R4",
+  "title": "Tests for the Morphine Milligram Equivalent (MME) Calculator for FHIR R4",
   "status": "active",
   "experimental": true,
   "type": {

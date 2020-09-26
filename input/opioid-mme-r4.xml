@@ -43,6 +43,11 @@
         <title value="MME Calculator"/>
         <generation value="markdown"/>
       </page>
+      <page>
+        <nameUrl value="conversion-factors.html"/>
+        <title value="Conversion Factors"/>
+        <generation value="markdown"/>
+      </page>
     </page>
     <!--  -->
     <!-- copyright year is a mandatory parameter -->
