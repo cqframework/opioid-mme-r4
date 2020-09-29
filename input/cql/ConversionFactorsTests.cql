@@ -72,9 +72,10 @@ code "Prefilled Syringe": '721656' from OMTKLogic.RXNORM display 'Prefilled Syri
 
 context Patient
 
-/*
 //define function GetConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code):
 //define function GetConversionFactor(ingredientCode Code, dailyDose Quantity, doseFormCode Code):
+//These are the default conversion factors if no conversion factor supplement is configured. They are a combination of the clinical and research conversion factors.
+//Specifically, they are the research conversion factors, except for methadone and fentanyl, which use the clinical conversion factors
 define TestGetConversionFactor_161: ConversionFactors.GetConversionFactor(acetaminophen, 200 'mg', "Oral Tablet") = 0
 define TestGetConversionFactor_1191: ConversionFactors.GetConversionFactor(aspirin, 200 'mg', "Oral Tablet") = 0
 define TestGetConversionFactor_1223: ConversionFactors.GetConversionFactor(atropine, 0.6 'mg', "Oral Tablet") = 0
@@ -127,21 +128,19 @@ define TestGetConversionFactor_237005: ConversionFactors.GetConversionFactor(lev
 define TestGetConversionFactor_636827: ConversionFactors.GetConversionFactor(guaiacolsulfonate, 70 'mg/mL', "Oral Solution") = 0
 define TestGetConversionFactor_787390: ConversionFactors.GetConversionFactor(tapentadol, 50 'mg', "Oral Tablet") = 0.4
 define TestGetConversionFactor_Message: ConversionFactors.GetConversionFactor(null, 10 'mg', null) is null
-*/
 
 //define ConversionFactorSupplement:
-define TestConversionFactorSupplementName: ConversionFactors.ConversionFactorSupplementName
-define TestConversionFactorSupplement: ConversionFactors.ConversionFactorSupplement
-define TestCodeSystems: [CodeSystem]
+define TestConversionFactorSupplementName: ConversionFactors.ConversionFactorSupplementName is null
+define TestConversionFactorSupplement: ConversionFactors.ConversionFactorSupplement is null
 
 /*
 Converts a range value boundary to a Decimal (or null for a wildcard)
 */
 //define function ToRangeValue(value System.String):
-define TestToRangeValueValid: ConversionFactors.ToRangeValue('1')
-define TestToRangeValueValidDecimal: ConversionFactors.ToRangeValue('0.15')
-define TestToRangeValueWildcard: ConversionFactors.ToRangeValue('*')
-define TestToRangeValueInvalid: ConversionFactors.ToRangeValue('foo')
+define TestToRangeValueValid: ConversionFactors.ToRangeValue('1') = 1
+define TestToRangeValueValidDecimal: ConversionFactors.ToRangeValue('0.15') = 0.15
+define TestToRangeValueWildcard: ConversionFactors.ToRangeValue('*') is null
+define TestToRangeValueInvalid: ConversionFactors.ToRangeValue('foo') is null
 
 /*
 Converts the property value of a dose-range-conversion-factor property to the dose range
@@ -149,41 +148,41 @@ Converts the property value of a dose-range-conversion-factor property to the do
 Note that low-value and/or high-value may be wildcards '*'
 */
 //define function ToDoseRange(propertyValue FHIR.string):
-define TestToDoseRangeValid: ConversionFactors.ToDoseRange(FHIR.string { value: '1-2:12' })
-define TestToDoseRangeBeginning: ConversionFactors.ToDoseRange(FHIR.string { value: '*-5:12'})
-define TestToDoseRangeEnding: ConversionFactors.ToDoseRange(FHIR.string { value: '1-*:12'})
-define TestToDoseRangeInvalid: ConversionFactors.ToDoseRange(FHIR.string { value: 'foo' })
+define TestToDoseRangeValid: ConversionFactors.ToDoseRange(FHIR.string { value: '1-2:12' }) = Interval[1, 2]
+define TestToDoseRangeBeginning: ConversionFactors.ToDoseRange(FHIR.string { value: '*-5:12'}) = Interval[-9999999999999999999999999999.99999999, 5]
+define TestToDoseRangeEnding: ConversionFactors.ToDoseRange(FHIR.string { value: '1-*:12'}) = Interval[1, 9999999999999999999999999999.99999999]
+define TestToDoseRangeInvalid: ConversionFactors.ToDoseRange(FHIR.string { value: 'foo' }) is null
 
 /*
 Converts the property value of a dose-range-conversion-factor property to the conversion factor
 <low-value>-<high-value>:<conversion-factor>
 */
 //define function ToDoseRangeConversionFactor(propertyValue FHIR.string):
-define TestToRangeConversionFactor: ConversionFactors.ToDoseRangeConversionFactor(FHIR.string { value: '1-2:12' })
-define TestToRangeConversionFactorInvalid: ConversionFactors.ToDoseRangeConversionFactor(FHIR.string { value: 'foo' })
+define TestToRangeConversionFactor: ConversionFactors.ToDoseRangeConversionFactor(FHIR.string { value: '1-2:12' }) = 12
+define TestToRangeConversionFactorInvalid: ConversionFactors.ToDoseRangeConversionFactor(FHIR.string { value: 'foo' }) is null
 
 /*
 Converts the property value of a dose-form-conversion-factor property to the dose form
 <dose-form-code>:<conversion-factor>
 */
 //define function ToDoseForm(propertyValue FHIR.string):
-define TestToDoseForm: ConversionFactors.ToDoseForm(FHIR.string { value: '12345:12' })
-define TestToDoseFormInvalid: ConversionFactors.ToDoseForm(FHIR.string { value: 'foo' })
+define TestToDoseForm: ConversionFactors.ToDoseForm(FHIR.string { value: '12345:12' }) = '12345'
+define TestToDoseFormInvalid: ConversionFactors.ToDoseForm(FHIR.string { value: 'foo' }) is null
 
 /*
 Converts the property value of a dose-form-conversion-factor property to the conversion factor
 <dose-form-code>:<conversion-factor>
 */
 //define function ToDoseFormConversionFactor(propertyValue FHIR.string):
-define TestToDoseFormConversionFactor: ConversionFactors.ToDoseFormConversionFactor(FHIR.string { value: '12345:12' })
-define TestToDoseFormConversionFactorInvalid: ConversionFactors.ToDoseFormConversionFactor(FHIR.string { value: 'foo' })
+define TestToDoseFormConversionFactor: ConversionFactors.ToDoseFormConversionFactor(FHIR.string { value: '12345:12' }) = 12
+define TestToDoseFormConversionFactorInvalid: ConversionFactors.ToDoseFormConversionFactor(FHIR.string { value: 'foo' }) is null
 
 /*
 Returns the conversion factor for a conversion-factor property
 NOTE: These functions are used to avoid use of _is_ and _as_
 */
 //define function ToConversionFactor(propertyValue FHIR.decimal):
-define TestToConversionFactor: ConversionFactors.ToConversionFactor(FHIR.decimal { value: 12 })
+define TestToConversionFactor: ConversionFactors.ToConversionFactor(FHIR.decimal { value: 12 }) = 12
 
 /*
 Looks up the conversion factor for the given ingredient, daily dose, and dose form from the
@@ -192,125 +191,4 @@ configured conversion factor supplement, if available.
 If no conversion factor supplement is configured, returns null
 */
 //define function LookupConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code):
-
-/*
-// With CDCMMEClinicalConversionFactors:
-define TestLookupCDCClinicalConversionFactor_2670: ConversionFactors.LookupConversionFactor(codeine, 12.5 'mg', "Oral Tablet") = 0.15
-define TestLookupCDCClinicalConversionFactor_4337_TransdermalSystem: ConversionFactors.LookupConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System") = 7200
-define TestLookupCDCClinicalConversionFactor_4337_NasalSpray: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray") is null
-define TestLookupCDCClinicalConversionFactor_4337_BuccalFilm: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Buccal Film") is null
-define TestLookupCDCClinicalConversionFactor_6813: ConversionFactors.LookupConversionFactor(methadone, 10 'mg', "Oral Tablet") = 4
-define TestLookupCDCClinicalConversionFactor_6813_30: ConversionFactors.LookupConversionFactor(methadone, 30 'mg', "Oral Tablet") = 8
-define TestLookupCDCClinicalConversionFactor_6813_50: ConversionFactors.LookupConversionFactor(methadone, 50 'mg', "Oral Tablet") = 10
-define TestLookupCDCClinicalConversionFactor_6813_70: ConversionFactors.LookupConversionFactor(methadone, 70 'mg', "Oral Tablet") = 12
-define TestLookupCDCClinicalConversionFactor_Invalid: ConversionFactors.LookupConversionFactor(aspirin, 200 'mg', "Oral Tablet") is null
-*/
-
-/*
-// With CDCMMEResearchConversionFactors:
-define TestLookupCDCResearchConversionFactor_161: ConversionFactors.LookupConversionFactor(acetaminophen, 200 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_1191: ConversionFactors.LookupConversionFactor(aspirin, 200 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_1223: ConversionFactors.LookupConversionFactor(atropine, 0.6 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_1767: ConversionFactors.LookupConversionFactor(brompheniramine, 1 'mg', "Chewable Tablet") is null
-define TestLookupCDCResearchConversionFactor_1819: ConversionFactors.LookupConversionFactor(buprenorphine, 0.02 'mg/h', "Transdermal System") = 12600
-define TestLookupCDCResearchConversionFactor_1819_Film: ConversionFactors.LookupConversionFactor(buprenorphine, 0.075 'mg', "Buccal Film") = 30
-define TestLookupCDCResearchConversionFactor_1841: ConversionFactors.LookupConversionFactor(butorphanol, 1 'mg/{actuat}', "Metered Dose Nasal Spray") = 7
-define TestLookupCDCResearchConversionFactor_1886: ConversionFactors.LookupConversionFactor(caffeine, 100 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_2101: ConversionFactors.LookupConversionFactor(carisoprodol, 250 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_2354: ConversionFactors.LookupConversionFactor(chlorcyclizine, 25 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_2400: ConversionFactors.LookupConversionFactor(chlorpheniramine, 0.5 'mg', "Chewable Tablet") is null
-define TestLookupCDCResearchConversionFactor_2670: ConversionFactors.LookupConversionFactor(codeine, 12.5 'mg', "Oral Tablet") = 0.15
-define TestLookupCDCResearchConversionFactor_3423: ConversionFactors.LookupConversionFactor(hydromorphone, 1 'mg', "Oral Tablet") = 4
-define TestLookupCDCResearchConversionFactor_3498: ConversionFactors.LookupConversionFactor(diphenhydramine, 18.75 'mg', "Oral Capsule") is null
-define TestLookupCDCResearchConversionFactor_4337: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg', "Buccal Tablet") = 130
-define TestLookupCDCResearchConversionFactor_4337_TransdermalSystem: ConversionFactors.LookupConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System") = 7200
-define TestLookupCDCResearchConversionFactor_4337_NasalSpray: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray") = 160
-define TestLookupCDCResearchConversionFactor_4337_BuccalFilm: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Buccal Film") = 180
-define TestLookupCDCResearchConversionFactor_5032: ConversionFactors.LookupConversionFactor(guaifenesin, 100 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_5489: ConversionFactors.LookupConversionFactor(hydrocodone, 10 'mg', "Oral Tablet") = 1
-define TestLookupCDCResearchConversionFactor_5640: ConversionFactors.LookupConversionFactor(ibuprofen, 100 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_6102: ConversionFactors.LookupConversionFactor(kaolin, 0.145 'mg/mg', "Topical Ointment") is null
-define TestLookupCDCResearchConversionFactor_6378: ConversionFactors.LookupConversionFactor(levorphanol, 2 'mg', "Oral Tablet") = 11
-define TestLookupCDCResearchConversionFactor_6754: ConversionFactors.LookupConversionFactor(meperidine, 100 'mg', "Oral Tablet") = 0.1
-define TestLookupCDCResearchConversionFactor_6813: ConversionFactors.LookupConversionFactor(methadone, 10 'mg', "Oral Tablet") = 3
-define TestLookupCDCResearchConversionFactor_7052: ConversionFactors.LookupConversionFactor(morphine, 10 'mg', "Oral Tablet") = 1
-define TestLookupCDCResearchConversionFactor_7242: ConversionFactors.LookupConversionFactor(naloxone, 0.7 'mg', "Buccal Film") is null
-define TestLookupCDCResearchConversionFactor_7243: ConversionFactors.LookupConversionFactor(naltrexone, 100 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_7804: ConversionFactors.LookupConversionFactor(oxycodone, 36 'mg', "Extended Release Oral Capsule") = 1.5
-define TestLookupCDCResearchConversionFactor_7814: ConversionFactors.LookupConversionFactor(oxymorphone, 10 'mg', "Oral Tablet") = 3
-define TestLookupCDCResearchConversionFactor_8001: ConversionFactors.LookupConversionFactor(pentazocine, 50 'mg', "Oral Tablet") = 0.37
-define TestLookupCDCResearchConversionFactor_8163: ConversionFactors.LookupConversionFactor(phenylephrine, 10 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_8175: ConversionFactors.LookupConversionFactor(phenylpropanolamine, 18 'mg', "Extended Release Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_8745: ConversionFactors.LookupConversionFactor(promethazine, 10 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_8896: ConversionFactors.LookupConversionFactor(pseudoephedrine, 45 'mg', "Oral Capsule") is null
-define TestLookupCDCResearchConversionFactor_9009: ConversionFactors.LookupConversionFactor(pyrilamine, 10 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_10689: ConversionFactors.LookupConversionFactor(tramadol, 100 'mg', "Oral Tablet") = 0.1
-define TestLookupCDCResearchConversionFactor_10849: ConversionFactors.LookupConversionFactor(triprolidine, 2.5 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_19759: ConversionFactors.LookupConversionFactor(bromodiphenhydramine, 2.5 'mg/mL', "Oral Solution") is null
-define TestLookupCDCResearchConversionFactor_19860: ConversionFactors.LookupConversionFactor(butalbital, 50 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_22696: ConversionFactors.LookupConversionFactor(dexbrompheniramine, 1 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_22697: ConversionFactors.LookupConversionFactor(dexchlorpheniramine, 2 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_23088: ConversionFactors.LookupConversionFactor(dihydrocodeine, 16 'mg', "Oral Tablet") = 0.25
-define TestLookupCDCResearchConversionFactor_27084: ConversionFactors.LookupConversionFactor(homatropine, 5 'mg', "Oral Tablet") is null
-define TestLookupCDCResearchConversionFactor_35780: ConversionFactors.LookupConversionFactor(ropivacaine, 10 'mg/mL', "Injection") is null
-define TestLookupCDCResearchConversionFactor_237005: ConversionFactors.LookupConversionFactor(levomethadyl, 10 'mg/mL', "Oral Solution") = 8
-define TestLookupCDCResearchConversionFactor_636827: ConversionFactors.LookupConversionFactor(guaiacolsulfonate, 70 'mg/mL', "Oral Solution") is null
-define TestLookupCDCResearchConversionFactor_787390: ConversionFactors.LookupConversionFactor(tapentadol, 50 'mg', "Oral Tablet") = 0.4
-define TestLookupCDCResearchConversionFactor_Message: ConversionFactors.LookupConversionFactor(null, 10 'mg', null) is null
-*/
-
-// With UCMMMEConversionFactors:
-define TestLookupUCMConversionFactor_161: ConversionFactors.LookupConversionFactor(acetaminophen, 200 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_1191: ConversionFactors.LookupConversionFactor(aspirin, 200 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_1223: ConversionFactors.LookupConversionFactor(atropine, 0.6 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_1767: ConversionFactors.LookupConversionFactor(brompheniramine, 1 'mg', "Chewable Tablet") is null
-define TestLookupUCMConversionFactor_1819: ConversionFactors.LookupConversionFactor(buprenorphine, 0.02 'mg/h', "Transdermal System") = 12600
-define TestLookupUCMConversionFactor_1819_Film: ConversionFactors.LookupConversionFactor(buprenorphine, 0.075 'mg', "Buccal Film") = 30
-define TestLookupUCMConversionFactor_1841: ConversionFactors.LookupConversionFactor(butorphanol, 1 'mg/{actuat}', "Metered Dose Nasal Spray") = 7
-define TestLookupUCMConversionFactor_1886: ConversionFactors.LookupConversionFactor(caffeine, 100 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_2101: ConversionFactors.LookupConversionFactor(carisoprodol, 250 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_2354: ConversionFactors.LookupConversionFactor(chlorcyclizine, 25 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_2400: ConversionFactors.LookupConversionFactor(chlorpheniramine, 0.5 'mg', "Chewable Tablet") is null
-define TestLookupUCMConversionFactor_2670: ConversionFactors.LookupConversionFactor(codeine, 12.5 'mg', "Oral Tablet") = 0.15
-define TestLookupUCMConversionFactor_3423: ConversionFactors.LookupConversionFactor(hydromorphone, 1 'mg', "Oral Tablet") = 4
-define TestLookupUCMConversionFactor_3423_PrefilledSyringe: ConversionFactors.LookupConversionFactor(hydromorphone, 0.5 'mL', "Prefilled Syringe") = 20
-define TestLookupUCMConversionFactor_3498: ConversionFactors.LookupConversionFactor(diphenhydramine, 18.75 'mg', "Oral Capsule") is null
-define TestLookupUCMConversionFactor_4337: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg', "Buccal Tablet") = 130
-define TestLookupUCMConversionFactor_4337_TransdermalSystem: ConversionFactors.LookupConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System") = 7200
-define TestLookupUCMConversionFactor_4337_NasalSpray: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray") = 160
-define TestLookupUCMConversionFactor_4337_BuccalFilm: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Buccal Film") = 180
-define TestLookupUCMConversionFactor_4337_Injection: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Injection") = 300
-define TestLookupUCMConversionFactor_5032: ConversionFactors.LookupConversionFactor(guaifenesin, 100 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_5489: ConversionFactors.LookupConversionFactor(hydrocodone, 10 'mg', "Oral Tablet") = 1
-define TestLookupUCMConversionFactor_5640: ConversionFactors.LookupConversionFactor(ibuprofen, 100 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_6102: ConversionFactors.LookupConversionFactor(kaolin, 0.145 'mg/mg', "Topical Ointment") is null
-define TestLookupUCMConversionFactor_6378: ConversionFactors.LookupConversionFactor(levorphanol, 2 'mg', "Oral Tablet") = 11
-define TestLookupUCMConversionFactor_6754: ConversionFactors.LookupConversionFactor(meperidine, 100 'mg', "Oral Tablet") = 0.1
-define TestLookupUCMConversionFactor_6813: ConversionFactors.LookupConversionFactor(methadone, 10 'mg', "Oral Tablet") = 4
-define TestLookupUCMConversionFactor_6813_30: ConversionFactors.LookupConversionFactor(methadone, 30 'mg', "Oral Tablet") = 8
-define TestLookupUCMConversionFactor_6813_50: ConversionFactors.LookupConversionFactor(methadone, 50 'mg', "Oral Tablet") = 10
-define TestLookupUCMConversionFactor_6813_70: ConversionFactors.LookupConversionFactor(methadone, 70 'mg', "Oral Tablet") = 12
-define TestLookupUCMConversionFactor_7052: ConversionFactors.LookupConversionFactor(morphine, 10 'mg', "Oral Tablet") = 1
-define TestLookupUCMConversionFactor_7242: ConversionFactors.LookupConversionFactor(naloxone, 0.7 'mg', "Buccal Film") is null
-define TestLookupUCMConversionFactor_7243: ConversionFactors.LookupConversionFactor(naltrexone, 100 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_7804: ConversionFactors.LookupConversionFactor(oxycodone, 36 'mg', "Extended Release Oral Capsule") = 1.5
-define TestLookupUCMConversionFactor_7814: ConversionFactors.LookupConversionFactor(oxymorphone, 10 'mg', "Oral Tablet") = 3
-define TestLookupUCMConversionFactor_8001: ConversionFactors.LookupConversionFactor(pentazocine, 50 'mg', "Oral Tablet") = 0.37
-define TestLookupUCMConversionFactor_8163: ConversionFactors.LookupConversionFactor(phenylephrine, 10 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_8175: ConversionFactors.LookupConversionFactor(phenylpropanolamine, 18 'mg', "Extended Release Oral Tablet") is null
-define TestLookupUCMConversionFactor_8745: ConversionFactors.LookupConversionFactor(promethazine, 10 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_8896: ConversionFactors.LookupConversionFactor(pseudoephedrine, 45 'mg', "Oral Capsule") is null
-define TestLookupUCMConversionFactor_9009: ConversionFactors.LookupConversionFactor(pyrilamine, 10 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_10689: ConversionFactors.LookupConversionFactor(tramadol, 100 'mg', "Oral Tablet") = 0.1
-define TestLookupUCMConversionFactor_10849: ConversionFactors.LookupConversionFactor(triprolidine, 2.5 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_19759: ConversionFactors.LookupConversionFactor(bromodiphenhydramine, 2.5 'mg/mL', "Oral Solution") is null
-define TestLookupUCMConversionFactor_19860: ConversionFactors.LookupConversionFactor(butalbital, 50 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_22696: ConversionFactors.LookupConversionFactor(dexbrompheniramine, 1 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_22697: ConversionFactors.LookupConversionFactor(dexchlorpheniramine, 2 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_23088: ConversionFactors.LookupConversionFactor(dihydrocodeine, 16 'mg', "Oral Tablet") = 0.25
-define TestLookupUCMConversionFactor_27084: ConversionFactors.LookupConversionFactor(homatropine, 5 'mg', "Oral Tablet") is null
-define TestLookupUCMConversionFactor_35780: ConversionFactors.LookupConversionFactor(ropivacaine, 10 'mg/mL', "Injection") is null
-define TestLookupUCMConversionFactor_237005: ConversionFactors.LookupConversionFactor(levomethadyl, 10 'mg/mL', "Oral Solution") = 8
-define TestLookupUCMConversionFactor_636827: ConversionFactors.LookupConversionFactor(guaiacolsulfonate, 70 'mg/mL', "Oral Solution") is null
-define TestLookupUCMConversionFactor_787390: ConversionFactors.LookupConversionFactor(tapentadol, 50 'mg', "Oral Tablet") = 0.4
-define TestLookupUCMConversionFactor_Message: ConversionFactors.LookupConversionFactor(null, 10 'mg', null) is null
+// This function is tested in different test libraries, one for each code system supplement defined

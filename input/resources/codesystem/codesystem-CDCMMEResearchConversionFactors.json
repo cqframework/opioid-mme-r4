@@ -55,6 +55,21 @@
         "display": "Chronic pain (finding)"
       } ]
     }
+  }, {
+    "code": {
+      "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code": "task",
+      "display": "Task"
+    },
+    "valueCodeableConcept": {
+      "coding": [
+        {
+          "system": "http://fhir.org/guides/cdc/opioid-mme-r4/CodeSystem/CDCMMEUsageContextCodes",
+          "code": "mme-calculation",
+          "display": "MME Calculation"
+        }
+      ]
+    }
   } ],
   "caseSensitive": false,
   "content": "supplement",

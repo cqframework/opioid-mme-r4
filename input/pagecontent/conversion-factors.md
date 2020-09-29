@@ -40,3 +40,11 @@ a conversion factor could not be determined from the supplied information.
 All conversion factors supplied in these supplements are in 'mg/d'. When the
 published references use other units, appropriate conversions have been applied
 to provide the conversion factor in consistent units to the calculator.
+
+## Usage
+
+The MME calculator looks up conversion factor configuration by:
+
+1. Looking for a CodeSystem that is a supplement to RxNorm and has a name matching the ConversionFactorSupplementName parameter defined in the ConversionFactors CQL library.
+2. Looking for a CodeSystem that is a supplement to RxNorm and has a [`task` usage context](http://hl7.org/fhir/codesystem-usage-context-type.html) of `mme-calculation`, as defined in the CDC MME Usage Context Codes code system published in this implementation guide.
+3. Using the hard-coded conversion factors returned by the GetConversionFactor function, which are the research conversion factors, augmented with the clinical conversion factors for methadone (on a sliding scale by dose quantity) and transdermal fentanyl (given as a daily factor, accounting for standard patch duration of 3 days).

@@ -44,10 +44,28 @@ All conversion factors supplied in these supplements are in 'mg/d'.
 
 using FHIR version '4.0.1'
 
+include FHIRHelpers version '4.0.1'
+
+codesystem "Usage Context Type": 'http://terminology.hl7.org/CodeSystem/usage-context-type'
+codesystem "CDC MME Usage Context Codes": 'http://fhir.org/guides/cdc/opioid-mme-r4/CodeSystem/CDCMMEUsageContextCodes'
+
+code "Task Usage Context": 'task' from "Usage Context Type"
+code "MME Calculation": 'mme-calculation' from "CDC MME Usage Context Codes"
+
 parameter ErrorLevel String default 'Warning'
-parameter ConversionFactorSupplementName String default 'CDCMMEClinicalConversionFactors'
-//parameter ConversionFactorSupplementName String default 'CDCMMEResearchConversionFactors'
-//parameter ConversionFactorSupplementName String default 'UCMMMEConversionFactors'
+
+/*
+If this parameter is supplied, it specifies the name of the code system supplement
+to be used to supply conversion factors for the calculator. If this parameter is not
+provided, the _single_ CodeSystem with a task usage context code of "mme-calculation"
+from the CDCMMEUsageContextCodes code system will be used to provide conversion factors.
+If neither of these configurations is available, the hard-coded conversion factors
+in GetConversionFactor will be used. The hard-coded conversion factors are a combination
+of the research and clinical conversion factors. Specifically, they are the research
+conversion factors, augmented with the clinical conversion factors for methadone
+and transdermal fentanyl.
+*/
+parameter ConversionFactorSupplementName String
 
 context Patient
 
@@ -168,7 +186,15 @@ define function GetConversionFactor(ingredientCode System.Code, dailyDose System
 define ConversionFactorSupplement:
   singleton from (
     [CodeSystem] C
-      where C.name.value = ConversionFactorSupplementName
+      where C.supplements.value = 'http://www.nlm.nih.gov/research/umls/rxnorm'
+      and (
+        C.name.value = ConversionFactorSupplementName
+          or exists (
+            C.useContext UC
+              where UC.code ~ "Task Usage Context"
+                and UC.value ~ "MME Calculation"
+          )
+      )
   )
 
 /*
