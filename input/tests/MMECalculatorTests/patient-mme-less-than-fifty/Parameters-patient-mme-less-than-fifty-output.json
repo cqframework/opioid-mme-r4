@@ -5,7 +5,7 @@
     {
       "name": "TotalMME",
       "valueQuantity": {
-        "value": "45",
+        "value": "45.0",
         "code": "{MME}/d"
       }
     }

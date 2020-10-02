@@ -48,3 +48,9 @@ The MME calculator looks up conversion factor configuration by:
 1. Looking for a CodeSystem that is a supplement to RxNorm and has a name matching the ConversionFactorSupplementName parameter defined in the ConversionFactors CQL library.
 2. Looking for a CodeSystem that is a supplement to RxNorm and has a [`task` usage context](http://hl7.org/fhir/codesystem-usage-context-type.html) of `mme-calculation`, as defined in the CDC MME Usage Context Codes code system published in this implementation guide.
 3. Using the hard-coded conversion factors returned by the GetConversionFactor function, which are the research conversion factors, augmented with the clinical conversion factors for methadone (on a sliding scale by dose quantity) and transdermal fentanyl (given as a daily factor, accounting for standard patch duration of 3 days).
+
+For systems that only need to support one set of conversion factors, they can be configured with
+only the appropriate code system supplement, and don't need to provide the ConversionFactorSupplementName
+parameter as part of execution. However, for systems that support run-time selection of conversion factors
+(i.e. a service) because all the available code system supplements would be loaded at the same time,
+their parameter is needed to distinguish which conversion factor set to use.
