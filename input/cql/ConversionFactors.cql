@@ -152,6 +152,8 @@ define function GetConversionFactor(ingredientCode System.Code, dailyDose System
           when dailyDose.value between 21 and 40 then 8
           when dailyDose.value between 41 and 60 then 10
           when dailyDose.value >= 61 then 12
+          when dailyDose is null or dailyDose.value is null then
+            Message(null, true, 'OMTKLogic.GetConversionFactor.DailyDoseNull', ErrorLevel, 'Daily dose is required to determine methadone conversion factor')
           else Message(null, dailyDose.value < 1, 'OMTKLogic.GetConversionFactor.DailyDoseLessThanOne', ErrorLevel, 'Daily dose less than 1')
         end
       )
