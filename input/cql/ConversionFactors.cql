@@ -24,12 +24,17 @@ the ingredient. The value of this property will be the decimal representation of
 the conversion factor.
 * dose-form-conversion-factor: Defines the conversion factor for an ingredient
 when the conversion factor varies by the dose form of the medication. The value
-of this property will be a string of the form <dose-form-code>:<conversion-factor>,
+of this property will be a string of the form
+<dose-form-code>:<conversion-factor>[@<doses-per-day>],
 e.g. 970789:130, where '970789' is the RxNorm dose form code, and '130' is the
-decimal representation of the conversion factor.
+decimal representation of the conversion factor. An example of a per-day
+conversion factor is fentanyl, 316987:7200@0.33333333, where 316987 is RxNorm
+dose form code, 7200 is the conversion factor, and 0.33333333 is the dosesPerDay,
+expressed as a decimal with a maximum of 8 digits after the decimal.
 * dose-range-conversion-factor: Defines the conversion factor for an ingredient
 when the conversion factor varies by the overall dose of the medication. The
-value of this property will be a string of the form <low-value>-<high-value>:<conversion-factor>,
+value of this property will be a string of the form
+<low-value>-<high-value>:<conversion-factor>,
 e.g. 1-20:4. Note that the low-value or high-value may be a wildcard '*' to
 indicate the range continues (e.g. '61-*:12' indicates the range is 61 or greater).
 
@@ -109,9 +114,9 @@ Tapentadol	0.4
 Tramadol	0.1
 
 */
-define function GetConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code):
+define function GetConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code, dosesPerDay System.Decimal):
   Coalesce(
-    LookupConversionFactor(ingredientCode, dailyDose, doseFormCode),
+    LookupConversionFactor(ingredientCode, dailyDose, doseFormCode, dosesPerDay),
     case ToInteger(ingredientCode.code)
       when 161 then 0 /* Acetaminophen */
       when 1191 then 0 /*	Aspirin */
@@ -119,7 +124,7 @@ define function GetConversionFactor(ingredientCode System.Code, dailyDose System
       when 1767 then 0 /*	Brompheniramine */
       when 1819 then ( /*	Buprenorphine */
         case
-          when ToInteger(doseFormCode.code) = 316987 then 12600 /* Transdermal system */
+          when ToInteger(doseFormCode.code) = 316987 then (0.14285714 / dosesPerDay) * 12600 /* Transdermal system over 7 days */
           else 30 /* Tablet or Film (or Film in MCG) */
         end
       )
@@ -136,7 +141,7 @@ define function GetConversionFactor(ingredientCode System.Code, dailyDose System
           when ToInteger(doseFormCode.code) in { 970789, 317007, 316992 } then 130 /* Buccal Tablet, Sublingual Tablet, Oral Lozenge */
           when ToInteger(doseFormCode.code) = 858080 then 180 /* Buccal Film */
           when ToInteger(doseFormCode.code) in { 126542, 346163, 1797831 } then 160 /* Nasal Spray, Mucosal Spray, Metered Dose Nasal Spray */
-          when ToInteger(doseFormCode.code) = 316987 then 7200 /* Transdermal system */
+          when ToInteger(doseFormCode.code) = 316987 then (0.33333333 / dosesPerDay) * 7200 /* Transdermal system */
           else Message(null, true, 'OMTKLogic.GetConversionFactor.UnknownDoseForm', ErrorLevel, 'Unknown dose form code ' & doseFormCode.code)
         end
       )
@@ -231,10 +236,22 @@ define function ToDoseForm(propertyValue FHIR.string):
 
 /*
 Converts the property value of a dose-form-conversion-factor property to the conversion factor
-<dose-form-code>:<conversion-factor>
+<dose-form-code>:<conversion-factor>[@doses-per-day]
 */
-define function ToDoseFormConversionFactor(propertyValue FHIR.string):
-  ToDecimal(Split(propertyValue.value, ':')[1])
+define function ToDoseFormConversionFactor(propertyValue FHIR.string, dosesPerDay System.Decimal):
+  if PositionOf('@', propertyValue.value) > 0 then
+    ToDoseFormDosesPerDayConversionFactor(propertyValue, dosesPerDay)
+  else
+    ToDecimal(Split(propertyValue.value, ':')[1])
+
+/*
+Converts the property value of a dose-form-conversion-factor property to the conversion factor
+if the property includes a doses-per-day value
+*/
+define function ToDoseFormDosesPerDayConversionFactor(propertyValue FHIR.string, dosesPerDay System.Decimal):
+  propertyValue P
+    let components: Split(P.value, '@')
+    return (ToDecimal(components[1]) / dosesPerDay) * ToDecimal(Split(components[0], ':')[1])
 
 /*
 Returns the conversion factor for a conversion-factor property
@@ -249,7 +266,7 @@ configured conversion factor supplement, if available.
 
 If no conversion factor supplement is configured, returns null
 */
-define function LookupConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code):
+define function LookupConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code, dosesPerDay System.Decimal):
   ConversionFactorSupplement CFS
     let
       ingredientConcept: singleton from (CFS."concept" C where C.code.value = ingredientCode.code),
@@ -270,7 +287,7 @@ define function LookupConversionFactor(ingredientCode System.Code, dailyDose Sys
             singleton from (
               doseFormConversionFactors DFCF
                 where doseFormCode.code = ToDoseForm(DFCF.value)
-                return ToDoseFormConversionFactor(DFCF.value)
+                return ToDoseFormConversionFactor(DFCF.value, dosesPerDay)
             )
           else null
         end,

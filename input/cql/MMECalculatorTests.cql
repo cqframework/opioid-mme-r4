@@ -7,4 +7,6 @@ include MMECalculator version '3.0.0'
 
 context Patient
 
+define MedicationRequests: [MedicationRequest]
+define Prescriptions: MMECalculator.Prescriptions([MedicationRequest])
 define TotalMME: MMECalculator.TotalMME([MedicationRequest])

@@ -52,6 +52,21 @@
         "display": "Chronic pain (finding)"
       } ]
     }
+  }, {
+    "code": {
+      "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code": "task",
+      "display": "Task"
+    },
+    "valueCodeableConcept": {
+      "coding": [
+        {
+          "system": "http://fhir.org/guides/cdc/opioid-mme-r4/CodeSystem/CDCMMEUsageContextCodes",
+          "code": "mme-calculation",
+          "display": "MME Calculation"
+        }
+      ]
+    }
   } ],
   "caseSensitive": false,
   "content": "supplement",
@@ -64,7 +79,7 @@
     },
     {
       "code": "dose-form-conversion-factor",
-      "description": "Defines the conversion factor for an ingredient when the conversion factor varies by the dose form of the medication. The value of this property will be a string of the form <dose-form-code>:<conversion-factor>, e.g. 970789:130, where '970789' is the RxNorm dose form code, and '130' is the decimal representation of the conversion factor.",
+      "description": "Defines the conversion factor for an ingredient when the conversion factor varies by the dose form of the medication. The value of this property will be a string of the form <dose-form-code>:<conversion-factor>[@<doses-per-day>], e.g. 970789:130, where '970789' is the RxNorm dose form code, and '130' is the decimal representation of the conversion factor. An example of a per-day conversion factor is fentanyl, 316987:7200@0.33333333, where 316987 is RxNorm dose form code, 7200 is the conversion factor, and 0.33333333 is the dosesPerDay, expressed as a decimal with a maximum of 8 digits after the decimal.",
       "type": "string"
     },
     {
@@ -87,7 +102,7 @@
       "display": "Fentanyl",
       "property": [{
         "code": "dose-form-conversion-factor",
-        "valueString": "316987:7200"
+        "valueString": "316987:7200@0.33333333"
       }]
     },
     {

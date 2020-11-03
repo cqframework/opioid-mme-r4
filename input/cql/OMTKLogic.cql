@@ -44,12 +44,20 @@ codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
 parameter ErrorLevel String default 'Warning'
 
-/*  Normalizes the input units to UCUM units
+define function Msg(code String, errorLevel String, message String):
+  {
+    code: code,
+    errorLevel: errorLevel,
+    message: message
+  }
 
-  The values listed here are the only ones currently present in the OMTK data
+/*
+Normalizes the input units to UCUM units
 
-  Based on the HL7 UCUM subset here:
-  http://download.hl7.de/documents/ucum/ucumdata.html
+The values listed here are the only ones currently present in the OMTK data
+
+Based on the HL7 UCUM subset here:
+http://download.hl7.de/documents/ucum/ucumdata.html
 */
 define function ToUCUM(unit String):
   case unit
@@ -59,6 +67,18 @@ define function ToUCUM(unit String):
     when 'MG/ML' then 'mg/mL'
     else Message(null, true, 'OMTKLogic.ToUCUM.UnknownUnit', ErrorLevel, 'Unknown unit ' & unit)
   end
+
+define function ToUCUM_Msg(unit String):
+  unit U
+    let result: ToUCUM(U)
+    return {
+      result: result,
+      message:
+        if result is null then
+          Msg('OMTKLogic.ToUCUM.UnknownUnit', ErrorLevel, 'Unknown unit' & unit)
+        else
+          null
+    }
 
 /*
   Calculates daily frequency given frequency within a period
@@ -89,18 +109,30 @@ define function ToDaily(frequency Integer, period Quantity):
     else Message(null, true, 'OMTKLogic.ToDaily.UnknownUnit', ErrorLevel, 'Unknown unit ' & period.unit)
   end
 
-/*
-  Returns the opioid ingredients and their strengths that
-  make up the drug identified by the given rxNormCode as a list of tuples:
+define function ToDaily_Msg(frequency Integer, period Quantity):
+  frequency F
+    let result: ToDaily(frequency, period)
+    return {
+      result: result,
+      message:
+        if result is null then
+          Msg('OMTKLogic.ToDaily.UnknownUnit', ErrorLevel, 'Unknown unit ' & period.unit)
+        else
+          null
+    }
 
-  List<Tuple {
-    rxNormCode Code,
-    doseFormCode Code,
-    doseFormName String,
-    ingredientCode Code,
-    ingredientName String,
-    strength Quantity
-  }>
+/*
+Returns the opioid ingredients and their strengths that
+make up the drug identified by the given rxNormCode as a list of tuples:
+
+List<Tuple {
+  rxNormCode Code,
+  doseFormCode Code,
+  doseFormName String,
+  ingredientCode Code,
+  ingredientName String,
+  strength Quantity
+}>
 */
 
 /*
@@ -203,53 +235,56 @@ define function StripPer(unit String):
     else unit
 
 /*
-  Calculates daily dose for a specific ingredient based on the ingredient strength, dose form, dose quantity, and daily frequency
+  Calculates daily dose for a specific ingredient based on the ingredient strength,
+  dose form, dose quantity, and daily frequency.
+  In addition, returns a textual description of the daily dose.
+  Tuple { result: Quantity, description: String }
 */
 define function GetDailyDose(ingredientCode Code, strength Quantity, doseFormCode Code, doseQuantity Quantity, dosesPerDay Decimal):
   case
     when dosesPerDay is null or doseQuantity is null or strength is null then
-      null as Quantity
+      {
+        result: null as Quantity,
+        description: 'Missing doses per day, dose quantity, and/or strength'
+      }
 	  /* if patch --> daily dose = dose value (e.g, number patches with doseQuantity unit = "patch") * per-hour strength */
     when ToInteger(doseFormCode.code) = 316987 then
       /* buprenorphine or fentanyl patch */
       if ToInteger(ingredientCode.code) in { 1819, 4337 } then
-        Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: strength.unit }
+        (Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: strength.unit }) dailyDose
+          return {
+            result: dailyDose,
+            description: GetIngredientName(ingredientCode) & ' patch: ' & ToString(doseQuantity.value) & ' * ' & ToString(dosesPerDay) & '/d * ' & ToString(strength) & ' = ' + ToString(dailyDose)
+          }
       else
-        Message(null, true, 'OMTKLogic.GetDailyDoseDescription.UnknownPatchIngredient', ErrorLevel, 'Unknown patch ingredient: ' & ingredientCode.code & ':' & ingredientCode.display)
+        {
+          result: null as Quantity,
+          description: 'Unknown patch ingredient: ' & ingredientCode.code & ':' & ingredientCode.display
+        }
 
     /* if dose unit in actual mass units (mg or ug -- when it's a single med) --> daily dose = numTimesPerDay * dose */
     when doseQuantity.unit in { 'mg', 'ug' } then
-      Quantity { value: dosesPerDay * doseQuantity.value, unit: doseQuantity.unit }
+      (Quantity { value: dosesPerDay * doseQuantity.value, unit: doseQuantity.unit }) dailyDose
+        return {
+          result: dailyDose,
+          description: GetIngredientName(ingredientCode) + ' ' + GetDoseFormName(doseFormCode) + ': ' + ToString(dosesPerDay) + '/d * ' + ToString(doseQuantity) + ' = ' + ToString(dailyDose)
+        }
 
     /* if doseQuantity is in actual volume units (mL) --> daily dose = numTimesPerDay * dose * strength */
     when doseQuantity.unit = 'mL' and (PositionOf('/mL', strength.unit) = Length(strength.unit) - 3) then
-      Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: StripPer(strength.unit) }
+      (Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: StripPer(strength.unit) }) dailyDose
+        return {
+          result: dailyDose,
+          description: GetIngredientName(ingredientCode) + ' ' + GetDoseFormName(doseFormCode) + ': ' + ToString(dosesPerDay) + '/d * ' + ToString(doseQuantity) + ' * ' & ToString(strength) & ' = ' + ToString(dailyDose)
+        }
 
 		/* if doseQuantity is not in actual units (e.g., 1 tab, 1 spray -- when it's a combo med with a unit of tablet, or it's mg/actuat) -->  daily dose = numTimesPerDay * dose value * strength value */
     else
-      Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: StripPer(strength.unit) }
-  end
-
-/*
-  Builds a description for the daily dose for an ingredient
-*/
-define function GetDailyDoseDescription(ingredientCode Code, strength Quantity, doseFormCode Code, doseQuantity Quantity, dosesPerDay Decimal, dailyDose Quantity):
-  case
-    /* if patch */
-    when ToInteger(doseFormCode.code) = 316987 then
-      /* buprenorphine or fentanyl patch */
-      if ToInteger(ingredientCode.code) in { 1819, 4337 } then
-        GetIngredientName(ingredientCode) & ' patch: ' & ToString(doseQuantity.value) & ' * ' & ToString(dosesPerDay) & '/d * '& ToString(strength) & ' = ' + ToString(dailyDose)
-      else
-        Message(null, true, 'OMTKLogic.GetDailyDoseDescription.UnknownPatchIngredient', ErrorLevel, 'Unknown patch ingredient: ' & ingredientCode.code & ':' & ingredientCode.display)
-
-    /* if dose unit in actual mass units (mg or ug -- when it's a single med) */
-    when doseQuantity.unit in { 'mg', 'ug' } then
-      GetIngredientName(ingredientCode) + ' ' + GetDoseFormName(doseFormCode) + ': ' + ToString(dosesPerDay) + '/d * ' + ToString(doseQuantity) + ' = ' + ToString(dailyDose)
-
-    /* if doseQuantity in actual volume units (mL) or not in actual units (e.g. 1 tab, 1 spray) */
-    else
-      GetIngredientName(ingredientCode) + ' ' + GetDoseFormName(doseFormCode) + ': ' + ToString(dosesPerDay) + '/d * ' + ToString(doseQuantity) + ' * ' + ToString(strength) + ' = ' + ToString(dailyDose)
+      (Quantity { value: dosesPerDay * doseQuantity.value * strength.value, unit: StripPer(strength.unit) }) dailyDose
+        return {
+          result: dailyDose,
+          description: GetIngredientName(ingredientCode) + ' ' + GetDoseFormName(doseFormCode) + ': ' + ToString(dosesPerDay) + '/d * ' + ToString(doseQuantity) + ' * ' + ToString(strength) + ' = ' + ToString(dailyDose)
+        }
   end
 
 /*
@@ -278,8 +313,7 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
           let
             adjustedDoseQuantity: M.doseQuantity,
             dailyDose: GetDailyDose(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay),
-            dailyDoseDescription: GetDailyDoseDescription(I.ingredientCode, I.strength, I.doseFormCode, adjustedDoseQuantity, M.dosesPerDay, dailyDose),
-            factor: ConversionFactors.GetConversionFactor(I.ingredientCode, dailyDose, I.doseFormCode)
+            factor: ConversionFactors.GetConversionFactor(I.ingredientCode, dailyDose.result, I.doseFormCode, M.dosesPerDay)
           return {
             rxNormCode: M.rxNormCode,
             doseFormCode: I.doseFormCode,
@@ -287,11 +321,11 @@ define function CalculateMMEs(medications List<Tuple { rxNormCode Code, doseQuan
             dosesPerDay: M.dosesPerDay,
             ingredientCode: I.ingredientCode,
             strength: I.strength,
-            dailyDose: dailyDose,
-            dailyDoseDescription: dailyDoseDescription & (' * factor: ' + Coalesce(ToString(factor), 'No conversion factor available')),
+            dailyDose: dailyDose.result,
+            dailyDoseDescription: dailyDose.description & (' * factor: ' + Coalesce(ToString(factor), 'No conversion factor available')),
             conversionFactor: factor,
             mme: Quantity(
-              Round(dailyDose.value * factor, 1),
+              Round(dailyDose.result.value * factor, 1),
               '{MME}/d'
             )
           }

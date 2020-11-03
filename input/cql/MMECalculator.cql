@@ -79,13 +79,8 @@ define function Prescriptions(Orders List<MedicationRequest>):
       doseQuantity: ToFHIRQuantity(doseAndRate.dose),
       doseDescription:
         Coalesce(
-          // There should be a conversion from FHIR.SimpleQuantity to System.Quantity
-          if doseRange is not null
-            then ToString(doseRange.low)
-                + '-' + ToString(doseRange.high)
-                + doseRange.high.unit.value
-            else ToString(ToQuantity(doseQuantity)),
-            ''
+          ToString(ToQuantity(doseQuantity)),
+          ToString(doseRange.low.value.value) + '-' + ToString(doseRange.high.value.value) + ' ' + doseRange.high.unit.value
         ),
       frequencyDescription:
         ToString(dosageInstruction.timing.repeat.frequency.value) +
@@ -104,9 +99,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
         else
           // TODO: Shouldn't need the .value here on asNeededBoolean
           medicationName + ' ' + doseDescription + ' q' + frequencyDescription + (if dosageInstruction.asNeeded then ' PRN' else ''),
-      dose: if doseRange is not null
-            then ToQuantity(doseRange.high)
-            else ToQuantity(doseQuantity),
+      dose: ToQuantity(Coalesce(doseQuantity, doseRange.high)),
       dosesPerDay: Coalesce(OMTKLogic.ToDaily(frequency, period), 1.0)
     }
 
