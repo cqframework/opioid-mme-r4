@@ -18,7 +18,7 @@ This results in a set of ingredients with {MME}/d values for each opioid-related
 Determining MME at a point in time then requires consideration of all active opioid medications at that point. For each medication, a dose quantity, and a doses per day is determined. For FHIR R4, this done with the Prescriptions function to normalize from FHIR MedicationRequest resources, making use of the following elements:
 * medication (as a CodeableConcept)
 * dosageInstruction[0] (first and only element)
-* dosageInstruction[0].timing.repeat (uses frequency, frequencyMax, period, and periodUnit)
+* dosageInstruction[0].timing.repeat (uses frequency, frequencyMax, period, and periodUnit, and timeOfDay)
 * dosageInstruction[0].doseAndRate[0] (first and only element)
 * dosageInstruction[0].asNeeded (to determine PRN)
 * status (to determine whether it is a draft order)

@@ -84,12 +84,12 @@ If no conversion factor supplement is configured, returns null
 //define function LookupConversionFactor(ingredientCode System.Code, dailyDose System.Quantity, doseFormCode System.Code):
 
 // With CDCMMEClinicalConversionFactors:
-define TestLookupCDCClinicalConversionFactor_2670: ConversionFactors.LookupConversionFactor(codeine, 12.5 'mg', "Oral Tablet") = 0.15
-define TestLookupCDCClinicalConversionFactor_4337_TransdermalSystem: ConversionFactors.LookupConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System") = 7200
-define TestLookupCDCClinicalConversionFactor_4337_NasalSpray: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray") is null
-define TestLookupCDCClinicalConversionFactor_4337_BuccalFilm: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Buccal Film") is null
-define TestLookupCDCClinicalConversionFactor_6813: ConversionFactors.LookupConversionFactor(methadone, 10 'mg', "Oral Tablet") = 4
-define TestLookupCDCClinicalConversionFactor_6813_30: ConversionFactors.LookupConversionFactor(methadone, 30 'mg', "Oral Tablet") = 8
-define TestLookupCDCClinicalConversionFactor_6813_50: ConversionFactors.LookupConversionFactor(methadone, 50 'mg', "Oral Tablet") = 10
-define TestLookupCDCClinicalConversionFactor_6813_70: ConversionFactors.LookupConversionFactor(methadone, 70 'mg', "Oral Tablet") = 12
-define TestLookupCDCClinicalConversionFactor_Invalid: ConversionFactors.LookupConversionFactor(aspirin, 200 'mg', "Oral Tablet") is null
+define TestLookupCDCClinicalConversionFactor_2670: ConversionFactors.LookupConversionFactor(codeine, 12.5 'mg', "Oral Tablet", 1) = 0.15
+define TestLookupCDCClinicalConversionFactor_4337_TransdermalSystem: ConversionFactors.LookupConversionFactor(fentanyl, 0.012 'mg/h', "Transdermal System", 0.33333333) = 7200
+define TestLookupCDCClinicalConversionFactor_4337_NasalSpray: ConversionFactors.LookupConversionFactor(fentanyl, 0.1 'mg/{actuat}', "Mucosal Spray", 1) is null
+define TestLookupCDCClinicalConversionFactor_4337_BuccalFilm: ConversionFactors.LookupConversionFactor(fentanyl, 1.2 'mg', "Buccal Film", 1) is null
+define TestLookupCDCClinicalConversionFactor_6813: ConversionFactors.LookupConversionFactor(methadone, 10 'mg', "Oral Tablet", 1) = 4
+define TestLookupCDCClinicalConversionFactor_6813_30: ConversionFactors.LookupConversionFactor(methadone, 30 'mg', "Oral Tablet", 1) = 8
+define TestLookupCDCClinicalConversionFactor_6813_50: ConversionFactors.LookupConversionFactor(methadone, 50 'mg', "Oral Tablet", 1) = 10
+define TestLookupCDCClinicalConversionFactor_6813_70: ConversionFactors.LookupConversionFactor(methadone, 70 'mg', "Oral Tablet", 1) = 12
+define TestLookupCDCClinicalConversionFactor_Invalid: ConversionFactors.LookupConversionFactor(aspirin, 200 'mg', "Oral Tablet", 1) is null

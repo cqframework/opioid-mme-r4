@@ -61,7 +61,18 @@ define function ToQuantity(quantity FHIR.SimpleQuantity):
 
 /*
 Extracts the relevant information for prescription calculation from a list of
-FHIR MedicationRequest resources.
+FHIR MedicationRequest resources. This assumes a MedicationRequest that conforms
+to the MMEMedicationRequest profile, specifically:
+* 1 and only 1 dosageInstruction
+* 1 and only 1 doseAndRate
+* 1 timing with 1 repeat
+* frequency, frequencyMax, defaulting to 1
+* period, periodUnit, defaulting to 1 'd'
+* doseQuantity or doseRange
+* timeOfDay
+
+Note that if timeOfDay is specified in addition to frequency and period, it is ignored (i.e. assumed to be consistent with the specified frequency and period).
+TimeOfDay is only used to determine timesPerDay if frequency and period are not specified.
 */
 define function Prescriptions(Orders List<MedicationRequest>):
   Orders O
@@ -77,6 +88,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
       period: OMTKLogic.Quantity(repeat.period.value, repeat.periodUnit.value),
       doseRange: ToFHIRRange(doseAndRate.dose),
       doseQuantity: ToFHIRQuantity(doseAndRate.dose),
+      timesPerDay: Count(repeat.timeOfDay),
       doseDescription:
         Coalesce(
           ToString(ToQuantity(doseQuantity)),
@@ -100,7 +112,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
           // TODO: Shouldn't need the .value here on asNeededBoolean
           medicationName + ' ' + doseDescription + ' q' + frequencyDescription + (if dosageInstruction.asNeeded then ' PRN' else ''),
       dose: ToQuantity(Coalesce(doseQuantity, doseRange.high)),
-      dosesPerDay: Coalesce(OMTKLogic.ToDaily(frequency, period), 1.0)
+      dosesPerDay: Coalesce(OMTKLogic.ToDaily(frequency, period), timesPerDay, 1.0)
     }
 
 /*

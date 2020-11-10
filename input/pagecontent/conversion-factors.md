@@ -1,17 +1,13 @@
 The Morphine Milligram Equivalent (MME) calculator provides for configurable
 conversion factors, allowing the same calculator logic to be used in different
 settings and for different purposes. These conversion factors are configurable
-using a CodeSystem supplement. This implementation guide contains two conversion
-factor tables:
+using a CodeSystem supplement. This implementation guide contains one conversion
+factor table:
 
 * [CDCMMEClinicalConversionFactors](CodeSystem-CDCMMEClinicalConversionFactors.html)
-* [CDCMMEResearchConversionFactors](CodeSystem-CDCMMEResearchConversionFactors.html)
 
 The Clinical Conversion Factors table uses values from CDC guidance here:
 https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf
-
-The Research Conversion Factors table uses values from CDC information here:
-https://www.cdc.gov/drugoverdose/modules/data-files.html
 
 The CodeSystem supplements are configured with 3 types of properties:
 
