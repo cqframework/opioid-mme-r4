@@ -61,10 +61,8 @@ to be used to supply conversion factors for the calculator. If this parameter is
 provided, the _single_ CodeSystem with a task usage context code of "mme-calculation"
 from the CDCMMEUsageContextCodes code system will be used to provide conversion factors.
 If neither of these configurations is available, the hard-coded conversion factors
-in GetConversionFactor will be used. The hard-coded conversion factors are a combination
-of the research and clinical conversion factors. Specifically, they are the research
-conversion factors, augmented with the clinical conversion factors for methadone
-and transdermal fentanyl.
+in GetConversionFactor will be used. The hard-coded conversion factors use the
+clinical conversion factors only.
 */
 parameter ConversionFactorSupplementName String
 
