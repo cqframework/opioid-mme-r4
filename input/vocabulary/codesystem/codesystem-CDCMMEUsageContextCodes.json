@@ -1,0 +1,38 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "CDCMMEUsageContextCodes",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem",
+      "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem"
+    ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode": "shareable"
+  }, {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode": "publishable"
+  }, {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel",
+    "valueCode": "structured"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-sourceReference",
+    "valueUri": "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+  } ],
+  "version": "3.0.0",
+  "name": "CDCMMEUsageContextCodes",
+  "title": "CDC MME Usage Context Codes",
+  "status": "active",
+  "experimental": "false",
+  "description": "This Code System defines usage context codes used to configure the MME Conversion Factors Code System Supplement. If there is a single CodeSystem supplement to the RxNorm code system with a usage context of task and a code of 'mme-calculation', it will be used as the conversion factors for the calculator. See the Conversion Factors documentation for a description of the Code System supplements that can carry this configuration.",
+  "caseSensitive": false,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "mme-calculation",
+      "display": "MME Calculation",
+      "definition": "The clinical task of calculating the Morphine Milligram Equivalent (MME) for a medication, or set of medications for a patient."
+    }
+  ]
+}
