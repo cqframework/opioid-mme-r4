@@ -163,7 +163,7 @@ specified in OMTKData.
 */
 define function GetMedicationCode(concept Concept):
   First(
-    (concept.codes) C
+    ((concept.codes) C
       where C.system = 'http://www.nlm.nih.gov/research/umls/rxnorm'
         return singleton from (
           OMTKData.DrugIngredients DI
@@ -174,6 +174,8 @@ define function GetMedicationCode(concept Concept):
               display: DI.drugName
             }
         )
+    ) X
+      where X is not null
   )
 
 /*

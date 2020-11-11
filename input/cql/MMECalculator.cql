@@ -80,9 +80,9 @@ define function Prescriptions(Orders List<MedicationRequest>):
       rxNormCode: OMTKLogic.GetMedicationCode(O.medication),
       medicationName: OMTKLogic.GetMedicationName(rxNormCode),
       // NOTE: Assuming a single dosage instruction element
-      dosageInstruction: O.dosageInstruction[0],
+      dosageInstruction: singleton from O.dosageInstruction,
       // NOTE: Assuming a single dose and rate element
-      doseAndRate: dosageInstruction.doseAndRate[0],
+      doseAndRate: singleton from dosageInstruction.doseAndRate,
       repeat: dosageInstruction.timing.repeat,
       frequency: Coalesce(repeat.frequencyMax.value, repeat.frequency.value),
       period: OMTKLogic.Quantity(repeat.period.value, repeat.periodUnit.value),
