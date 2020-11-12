@@ -236,8 +236,7 @@ define function GetDoseFormName(doseFormCode Code):
 define function StripPer(unit String):
   unit X
     let split: Split(unit, '/'),
-      splitCount: Count(split),
-      tail: if Count(split) > 1 then ('/' + split[Count(split) - 1]) else null
+      splitCount: Count(split)
     return
       if splitCount > 1 then
         Substring(unit, 0, Length(unit) - Length(split[splitCount - 1]) - 1)
