@@ -106,8 +106,13 @@ define TestDrugs: {
 }
 
 //define function StripPer(unit String):
+define TestStripPer_Null: OMTKLogic.StripPer(null) is null
+define TestStripPer_Empty: OMTKLogic.StripPer('') = ''
+define TestStripPer_Tab: OMTKLogic.StripPer('{tab}') = '{tab}'
+define TestStripPer_MG: OMTKLogic.StripPer('mg') = 'mg'
 define TestStripPer_UGPerH: OMTKLogic.StripPer('ug/h') = 'ug'
 define TestStripPer_MGPerTab: OMTKLogic.StripPer('mg/{tab}') = 'mg'
+define TestStripPer_Multiple: OMTKLogic.StripPer('mg/h/h') = 'mg/h'
 
 //define function GetDailyDose(ingredientCode Code, strength Quantity, doseFormCode Code, doseQuantity Quantity, dosesPerDay Decimal):
 define TestGetDailyDose:
@@ -131,3 +136,6 @@ define TestCalculateMMEs:
       expectedMme: D.mme,
       description: Combine(mmes.dailyDoseDescription, ', ')
     }
+
+
+define TestGetIngredients: OMTKLogic.GetIngredients(Code '1049221' from OMTKLogic.RXNORM)

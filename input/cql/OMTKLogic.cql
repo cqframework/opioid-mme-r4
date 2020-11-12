@@ -230,11 +230,26 @@ define function GetDoseFormName(doseFormCode Code):
 
 /*
   Removes the last per argument from a unit
+  NOTE: Rewrote to not use LastPositionOf, since that function is not implemented in the JS engine
+  https://github.com/cqframework/cql-execution/issues/147
 */
+define function StripPer(unit String):
+  unit X
+    let split: Split(unit, '/'),
+      splitCount: Count(split),
+      tail: if Count(split) > 1 then ('/' + split[Count(split) - 1]) else null
+    return
+      if splitCount > 1 then
+        Substring(unit, 0, Length(unit) - Length(split[splitCount - 1]) - 1)
+      else
+        unit
+
+/*
 define function StripPer(unit String):
   if LastPositionOf('/', unit) >= 0
     then Substring(unit, 0, LastPositionOf('/', unit))
     else unit
+*/
 
 /*
   Calculates daily dose for a specific ingredient based on the ingredient strength,
@@ -244,7 +259,7 @@ define function StripPer(unit String):
 */
 define function GetDailyDose(ingredientCode Code, strength Quantity, doseFormCode Code, doseQuantity Quantity, dosesPerDay Decimal):
   case
-    when dosesPerDay is null or doseQuantity is null or strength is null then
+    when dosesPerDay is null or doseQuantity is null or strength is null or strength.value is null or strength.unit is null then
       {
         result: null as Quantity,
         description: 'Missing doses per day, dose quantity, and/or strength'
