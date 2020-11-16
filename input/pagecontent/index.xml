@@ -185,6 +185,17 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
                     |-- ...
               |-- ... // more test cases can be added by adding to this list</code></pre>
 
+  <a name="omtkdata"/>
+  <h3>OMTK Data</h3>
+
+  <p>
+    The calculator provided here uses per-ingredient strength values for combination drugs with opioid ingredients.
+    This data is gathered from RxNorm using the RxNav API, and distributed as a CQL library. The process for producing
+    and maintaining this information as RxNorm data is updated over time is provided in the following topic:
+  </p>
+
+  <p><a href="omtkdata-processing.html">Opioid Terminology Management Knowledge (OMTK) Data Processing</a></p>
+
   <a name="references"> </a>
   <h3>References and Disclaimers</h3>
 
