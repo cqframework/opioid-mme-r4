@@ -221,10 +221,13 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
 
   <p>THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDED "AS IS." ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
 
-  <p>National Center for Injury Prevention and Control. CDC compilation of benzodiazepines, muscle relaxants,
-    stimulants, zolpidem, and opioid analgesics with oral morphine milligram equivalent conversion factors, 2016 version.
-    Atlanta, GA: Centers for Disease Control and Prevention; 2016. Available at <a href="http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf">http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf</a>.</p>
+  <p>National Center for Injury Prevention and Control. Calculating total daily dose of opioids for safer dosage.
+    Atlanta, GA: Centers for Disease Control and Prevention; <a href="https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf">https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf</a>,
+    accessed November 19th, 2020.</p>
 
-  <p>NOTE: The above link is known to be out-of-date, the contents of this calculator are based on the 2016 version of that publication. It has since been updated with the 2018 guidance, but this calculator is still based on the 2016 guidance at this point.</p>
+  <p>NOTE: Do not use the calculated dose in MMEs to determine dosage for converting
+    one opioid to another—the new opioid should be lower to avoid unintentional overdose
+    caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics.
+    Consult the medication label.</p>
 
 </div>

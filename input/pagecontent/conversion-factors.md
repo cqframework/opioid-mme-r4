@@ -37,8 +37,12 @@ to provide the conversion factor in consistent units to the calculator.
 
 The MME calculator looks up conversion factor configuration by:
 
-1. Looking for a CodeSystem that is a supplement to RxNorm and has a name matching the ConversionFactorSupplementName parameter defined in the ConversionFactors CQL library.
+1. Looking for a CodeSystem that is a supplement to RxNorm and has a name matching the `ConversionFactorSupplementName` parameter defined in the `ConversionFactors` CQL library.
 2. Looking for a CodeSystem that is a supplement to RxNorm and has a [`task` usage context](http://hl7.org/fhir/codesystem-usage-context-type.html) of `mme-calculation`, as defined in the CDC MME Usage Context Codes code system published in this implementation guide.
-3. Using the hard-coded conversion factors returned by the GetConversionFactor function, which are the same as the clinical conversion factors, including conversion factors for methadone (on a sliding scale by dose quantity) and transdermal fentanyl (given as a daily factor, specified with a standard patch duration of 3 days).
+3. Using the hard-coded conversion factors returned by the `GetConversionFactor` function, which are the same as the clinical conversion factors, including conversion factors for methadone (on a sliding scale by dose quantity) and transdermal fentanyl (given as a daily factor, specified with a standard patch duration of 3 days).
 
-Systems that only need to support one set of conversion factors can be configured with only the appropriate code system supplement, and don't need to provide the ConversionFactorSupplementName parameter as part of execution. However, systems that support run-time selection of conversion factors (i.e. a service) need all available code system supplements and can use the ConversionFactorSupplementName parameter to distinguish which conversion factor set to use.
+Systems that only need to support one set of conversion factors can be configured with only the appropriate code system supplement, and don't need to provide the `ConversionFactorSupplementName` parameter as part of execution. However, systems that support run-time selection of conversion factors (i.e. a service) need all available code system supplements and can use the `ConversionFactorSupplementName` parameter to distinguish which conversion factor set to use.
+
+## Disclaimer
+
+> The conversion factors supplied with this content are provided by the CDC as part of the Opioid Prescribing Guideline. Configuring the calculator to use conversion factors other than those provided here should be done with extreme caution and under the direction of appropriate clinical expertise.

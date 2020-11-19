@@ -24,3 +24,9 @@ Determining MME at a point in time then requires consideration of all active opi
 * status (to determine whether it is a draft order)
 
 This results in input suitable for use by the base MME calculator, the MME value is determined for each input medication, and the result is summarized.
+
+> **Caution**: Do not use the calculated dose in MMEs to determine dosage for converting one opioid to another—the new opioid should be lower to avoid unintentional overdose caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics. Consult the medication label.</p>
+
+> **Extra Caution**:
+> * Methadone: the conversion factor increases at higher doses
+> * Fentanyl: dosed in mcg/hr instead of mg/day, and absorption is affected by heat and other factors.
