@@ -233,7 +233,7 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
   <p><b>License and Disclaimer</b>: This content is licensed under an <a href="license.html">Apache 2.0 License</a> with the following additional disclaimer:</p>
 
   <p><b>Health-Related Additional Disclaimer of Warranty and Limitation of Liability</b></p>
-   
+
   <p>In the United States, or any other jurisdictions where they may apply, the following
   additional disclaimer of warranty and limitation of liability are hereby incorporated
   into the terms and conditions of Apache License 2.0:</p>
