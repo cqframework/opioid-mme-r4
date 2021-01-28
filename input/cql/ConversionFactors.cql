@@ -79,8 +79,8 @@ https://www.cms.gov/Medicare/Prescription-Drug-Coverage/PrescriptionDrugCovContr
 
 |Opioid (strength in mg except where noted)     |MME Conversion Factor*|
 |-----------------------------------------------|----------------------|
-|Codeine	0.15                                  |                 0.15 |
-|Fentanyl, transdermal patch (MCG/HR)	          |                 2.4  |
+|Codeine                                        |                 0.15 |
+|Fentanyl, transdermal patch (MCG/HR)           |                 2.4  |
 |Hydrocodone                                    |                 1    |
 |Hydromorphone                                  |                 4    |
 |Methadone                                      |                      |
