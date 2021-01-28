@@ -15,10 +15,10 @@ The CodeSystem supplements are configured with 3 types of properties:
 when the conversion factor is the same for all dose forms and dose amounts for
 the ingredient. The value of this property will be the decimal representation of
 the conversion factor.
-* `dose-form-conversion-factor`: Defines the conversion factor for an ingredient when the conversion factor varies by the dose form of the medication. The value of this property will be a string of the form <dose-form-code>:<conversion-factor>[@<doses-per-day>], e.g. 970789:130, where '970789' is the RxNorm dose form code, and '130' is the decimal representation of the conversion factor. An example of a per-day conversion factor is fentanyl, 316987:7200@0.33333333, where 316987 is RxNorm dose form code, 7200 is the conversion factor, and 0.33333333 is the dosesPerDay, expressed as a decimal with a maximum of 8 digits after the decimal.
+* `dose-form-conversion-factor`: Defines the conversion factor for an ingredient when the conversion factor varies by the dose form of the medication. The value of this property will be a string of the form `<dose-form-code>:<conversion-factor>[@<doses-per-day>]`, e.g. 970789:130, where '970789' is the RxNorm dose form code, and '130' is the decimal representation of the conversion factor. An example of a per-day conversion factor is fentanyl, 316987:7200@0.33333333, where 316987 is RxNorm dose form code, 7200 is the conversion factor, and 0.33333333 is the dosesPerDay, expressed as a decimal with a maximum of 8 digits after the decimal.
 * `dose-range-conversion-factor`: Defines the conversion factor for an ingredient
 when the conversion factor varies by the overall dose of the medication. The
-value of this property will be a string of the form <low-value>-<high-value>:<conversion-factor>,
+value of this property will be a string of the form `<low-value>-<high-value>:<conversion-factor>`,
 e.g. 1-20:4. Note that the low-value or high-value may be a wildcard '*' to
 indicate the range continues (e.g. '61-*:12' indicates the range is 61 or greater).
 
