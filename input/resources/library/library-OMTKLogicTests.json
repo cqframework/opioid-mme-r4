@@ -33,7 +33,6 @@
   },
   "description": "This library tests the MME calculator provided by the OMTKLogic library",
   "content": [ {
-    "id": "ig-loader-OMTKLogicTests.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-OMTKLogicTests.cql"
   } ]
 }

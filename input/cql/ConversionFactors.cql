@@ -74,9 +74,6 @@ Returns the conversion factor for the given ingredient
 CDC Guidance:
 https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf
 
-CMS Guidance:
-https://www.cms.gov/Medicare/Prescription-Drug-Coverage/PrescriptionDrugCovContra/Downloads/Oral-MME-CFs-vFeb-2018.pdf
-
 |Opioid (strength in mg except where noted)     |MME Conversion Factor*|
 |-----------------------------------------------|----------------------|
 |Codeine                                        |                 0.15 |

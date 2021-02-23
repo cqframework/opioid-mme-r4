@@ -78,7 +78,6 @@
     "url": "http://www.pdmpassist.org/pdf/BJA_performance_measure_aid_MME_conversion.pdf"
   } ],
   "content": [ {
-    "id": "ig-loader-OMTKLogic.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-OMTKLogic.cql"
   } ]
 }

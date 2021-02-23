@@ -1,13 +1,11 @@
-# Opioid Terminology Knowledge Management Library
-
 This document describes the process for creating the OMTKData library.
 
-## Access DB refresh
+### Access DB refresh
 
 Use the process and tools described in the Opioid CDS Implementation Guide to construct
 the Access DB: http://build.fhir.org/ig/cqframework/opioid-cds/service-documentation.html#solution2
 
-## Convert the AccessDB to Sqlite:
+### Convert the AccessDB to Sqlite:
 
 https://www.rebasedata.com/convert-access-to-sqlite-online
 
@@ -17,7 +15,7 @@ type for all RXCUI fields to INTEGER
 Use Sqlitebrowser (or similar ad-hoc query tool for sqlite)
 http://sqlitebrowser.org
 
-## Generate CQL:
+### Generate CQL:
 
 Use the following Sqlite query to generate the CQL list selector for the OMTK Data:
 

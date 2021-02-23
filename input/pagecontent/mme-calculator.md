@@ -25,7 +25,13 @@ Determining MME at a point in time then requires consideration of all active opi
 
 This results in input suitable for use by the base MME calculator, the MME value is determined for each input medication, and the result is summarized.
 
-> **Caution**: Do not use the calculated dose in MMEs to determine dosage for converting one opioid to another—the new opioid should be lower to avoid unintentional overdose caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics. Consult the medication label.</p>
+### Cautions
+
+> **Caution**: Do not use the calculated dose in MMEs to determine dosage for converting one opioid to another--the new opioid should be dosed lower to avoid unintentional overdose caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics. Consult the medication label.
+
+> **Caution**: Dosage thresholds in the 2016 CDC Guideline are based on overdose risk when opioids are prescribed for pain and should not guide dosing of medication treatment for opioid use disorder (i.e., medication-assisted treatment [MAT]).
+
+> **Caution**: Tapentadol is a mu receptor agonist and norepinephrine reuptake inhibitor. MMEs are based on degree of mu-receptor agonist activity, but it is unknown if this drug is associated with overdose in the same dose-dependent manner as observed with medications that are solely mu receptor agonists.
 
 > **Extra Caution**:
 > * Methadone: the conversion factor increases at higher doses

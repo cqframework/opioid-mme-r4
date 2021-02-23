@@ -54,6 +54,8 @@
   <a name="contents"> </a>
   <h3>Contents</h3>
 
+  <p><a href="toc.html">Table of Contents</a></p>
+
   <p>
     The MME calculation logic is contained within four libraries:
   </p>
@@ -67,9 +69,9 @@
 
   <p>
     Layering the calculator in this way enables it to be used with different data models. In particular, the calculator
-    is being used with <a href="">Quality Data Model</a> as part of the specification of a Potential Opioid Overuse electronic
+    is being used with <a href="http://ecqi.healthit.gov/qdm">Quality Data Model</a> as part of the specification of a Potential Opioid Overuse electronic
     Clinical Quality Measure (eCQM), and as part of the computable representation of the CDC Opioid Prescribing Guideline in
-    both <a href="">FHIR STU3</a> and <a href="">FHIR R4</a> versions.
+    both <a href="http://hl7.org/fhir/STU3">FHIR STU3</a> and <a href="http://hl7.org/fhir/R4">FHIR R4</a> versions.
   </p>
 
   <a name="data-elements"> </a>
@@ -81,7 +83,9 @@
     profile in order to produce the expected results:
   </p>
 
-  <a href="StructureDefinition-mmemedicationrequest.html">MMEMedicationRequest</a>
+  <ul>
+    <li><a href="StructureDefinition-mmemedicationrequest.html">MMEMedicationRequest</a></li>
+  </ul>
 
   <a name="usage"> </a>
   <h3>Usage</h3>
@@ -229,6 +233,8 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
     one opioid to another—the new opioid should be lower to avoid unintentional overdose
     caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics.
     Consult the medication label.</p>
+
+  <p>NOTE: Refer to the Cautions associated with use of this content on the <a href="conversion-factors.html#cautions">Conversion Factors</a> and <a href="mme-calculator.html#cautions">MME Calculator</a> pages.</p>
 
   <p><b>License and Disclaimer</b>: This content is licensed under an <a href="license.html">Apache 2.0 License</a> with the following additional disclaimer:</p>
 

@@ -33,7 +33,6 @@
   },
   "description": "This library contains tests of the OMTKData library",
   "content": [ {
-    "id": "ig-loader-OMTKDataTests.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-OMTKDataTests.cql"
   } ]
 }

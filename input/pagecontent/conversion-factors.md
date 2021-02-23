@@ -33,7 +33,7 @@ All conversion factors supplied in these supplements are in 'mg/d'. When the
 published references use other units, appropriate conversions have been applied
 to provide the conversion factor in consistent units to the calculator.
 
-## Usage
+### Usage
 
 The MME calculator looks up conversion factor configuration by:
 
@@ -43,6 +43,10 @@ The MME calculator looks up conversion factor configuration by:
 
 Systems that only need to support one set of conversion factors can be configured with only the appropriate code system supplement, and don't need to provide the `ConversionFactorSupplementName` parameter as part of execution. However, systems that support run-time selection of conversion factors (i.e. a service) need all available code system supplements and can use the `ConversionFactorSupplementName` parameter to distinguish which conversion factor set to use.
 
-## Disclaimer
+### Cautions
 
-> The conversion factors supplied with this content are provided by the CDC as part of the Opioid Prescribing Guideline. Configuring the calculator to use conversion factors other than those provided here should be done with extreme caution and under the direction of appropriate clinical expertise.
+> **Caution**: The conversion factors supplied with this content are provided by the CDC as part of the Opioid Prescribing Guideline. Configuring the calculator to use conversion factors other than those provided here should be done with extreme caution and under the direction of appropriate clinical expertise.
+
+> **Caution**: Buprenorphine, as a partial opioid agonist, is not associated with overdose in the same dose-dependent manner as observed with medications that are full opioid agonists, and is not/should not be included in the calculator
+
+> **Caution**: Equianalgesic dose conversions are only estimates and cannot account for individual variability in genetics and pharmacokinetics.

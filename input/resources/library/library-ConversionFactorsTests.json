@@ -61,7 +61,6 @@
   } ],
   "lastReviewDate": "2020-09-26",
   "content": [ {
-    "id": "ig-loader-ConversionFactorsTests.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-ConversionFactorsTests.cql"
   } ]
 }

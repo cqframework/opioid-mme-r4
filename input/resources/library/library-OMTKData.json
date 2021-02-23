@@ -60,7 +60,7 @@
     }
   } ],
   "copyright": "This product uses publicly available data courtesy of the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.",
-  "lastReviewDate": "2020-03-01",
+  "lastReviewDate": "2020-10-20",
   "topic": [ {
     "text": "Opioid Prescribing"
   } ],
@@ -74,7 +74,6 @@
     "url": "http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-1-medication-and-terminology-knowledge-base"
   } ],
   "content": [ {
-    "id": "ig-loader-OMTKData.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-OMTKData.cql"
   } ]
 }

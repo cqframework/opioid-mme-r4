@@ -61,7 +61,6 @@
   } ],
   "lastReviewDate": "2020-09-26",
   "content": [ {
-    "id": "ig-loader-MMECalculator.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-MMECalculator.cql"
   } ]
 }

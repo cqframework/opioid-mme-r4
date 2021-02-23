@@ -33,7 +33,6 @@
   },
   "description": "This library contains tests to validate the functionality of the FHIR R4 MME calculator",
   "content": [ {
-    "id": "ig-loader-MMECalculatorTests.cql",
-    "contentType": "text/cql"
+    "id": "ig-loader-MMECalculatorTests.cql"
   } ]
 }
