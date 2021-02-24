@@ -2,13 +2,19 @@
   "resourceType": "GuidanceResponse",
   "id": "patient-mme-greater-than-fifty",
   "contained": [
-  ],
-  "extension": [
     {
-      "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/inputParameters",
-      "valueReference": {
-        "reference": "Parameters/patient-mme-greater-than-fifty-input"
-      }
+      "resourceType": "Parameters",
+      "id": "output",
+      "parameter": [
+        {
+          "name": "TotalMME",
+          "valueQuantity": {
+            "value": 180.0,
+            "system": "http://unitsofmeasure.org",
+            "code": "{MME}/d"
+          }
+        }
+      ]
     }
   ],
   "moduleCanonical": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/MMECalculatorTests",
@@ -17,6 +23,6 @@
     "reference": "Patient/patient-mme-greater-than-fifty"
   },
   "outputParameters": {
-    "reference": "Parameters/patient-mme-greater-than-fifty-output"
+    "reference": "#output"
   }
 }

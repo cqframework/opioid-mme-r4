@@ -24,7 +24,7 @@
   "name": "CDCMMEUsageContextCodes",
   "title": "CDC MME Usage Context Codes",
   "status": "active",
-  "experimental": "false",
+  "experimental": false,
   "description": "This Code System defines usage context codes used to configure the MME Conversion Factors Code System Supplement. If there is a single CodeSystem supplement to the RxNorm code system with a usage context of task and a code of 'mme-calculation', it will be used as the conversion factors for the calculator. See the Conversion Factors documentation for a description of the Code System supplements that can carry this configuration.",
   "caseSensitive": false,
   "content": "complete",

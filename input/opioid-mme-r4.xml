@@ -124,6 +124,22 @@
       <code value="path-resource" />
       <value value="input/vocabulary/valueset"/>
     </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/MMECalculatorTests/patient-mme-greater-than-fifty" />
+    </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/MMECalculatorTests/patient-mme-less-than-fifty" />
+    </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/MMECalculatorTests/patient-mme-with-timeofday" />
+    </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/MMECalculatorTests/patient-no-meds" />
+    </parameter>
 <!-- Uncomment one or more of these if you want to limit which syntaxes are supported or want to disable the display of mappings
     <parameter>
       <code value="excludexml"/>
