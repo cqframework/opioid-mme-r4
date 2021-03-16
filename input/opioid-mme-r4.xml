@@ -35,6 +35,102 @@
     <version value="dev"/>
   </dependsOn>
   <definition>
+    <resource>
+      <reference>
+        <reference value="Patient/cfct-example"/>
+      </reference>
+      <name value="Conversion Factors Clinical Tests - Patient"/>
+      <description value="Test patient for the Conversion Factors Clinical Tests"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Patient/cft-example"/>
+      </reference>
+      <name value="Conversion Factors Tests - Patient"/>
+      <description value="Test patient for the Conversion Factors Tests"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="MedicationRequest/example-rec-05-mme-greater-than-fifty-context"/>
+      </reference>
+      <name value="MME Calculator Tests - Greater than Fifty - MedicationRequest"/>
+      <description value="Test MedicationRequest for the Greater than Fifty test case of the MME Calculator"/>
+      <exampleCanonical value="http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="GuidanceResponse/patient-mme-greater-than-fifty"/>
+      </reference>
+      <name value="MME Calculator Tests - Greater than Fifty - GuidanceResponse"/>
+      <description value="Expected GuidanceResponse result for the Greater than Fifty test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Patient/patient-mme-greater-than-fifty"/>
+      </reference>
+      <name value="MME Calculator Tests - Greater than Fifty - Patient"/>
+      <description value="Test patient for the Greater than Fifty test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="MedicationRequest/example-rec-05-mme-less-than-fifty-context"/>
+      </reference>
+      <name value="MME Calculator Tests - Less than Fifty - MedicationRequest"/>
+      <description value="Test MedicationRequest for the Less than Fifty test case of the MME Calculator"/>
+      <exampleCanonical value="http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="GuidanceResponse/patient-mme-less-than-fifty"/>
+      </reference>
+      <name value="MME Calculator Tests - Less than Fifty - GuidanceResponse"/>
+      <description value="Expected GuidanceResponse result for the Less than Fifty test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Patient/patient-mme-less-than-fifty"/>
+      </reference>
+      <name value="MME Calculator Tests - Less than Fifty - Patient"/>
+      <description value="Test patient for the Less than Fifty test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="MedicationRequest/example-rec-05-mme-with-timeofday-context"/>
+      </reference>
+      <name value="MME Calculator Tests - With Time of Day - MedicationRequest"/>
+      <description value="Test MedicationRequest for the With Time of Day test case of the MME Calculator"/>
+      <exampleCanonical value="http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="GuidanceResponse/patient-mme-with-timeofday"/>
+      </reference>
+      <name value="MME Calculator Tests - With Time of Day - GuidanceResponse"/>
+      <description value="Expected GuidanceResponse result for the With Time of Day test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Patient/patient-mme-with-timeofday"/>
+      </reference>
+      <name value="MME Calculator Tests - With Time of Day - Patient"/>
+      <description value="Test patient for the With Time of Day test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <reference>
+        <reference value="Patient/patient-no-meds"/>
+      </reference>
+      <name value="MME Calculator Tests - No Meds - Patient"/>
+      <description value="Test patient for the No Meds test case of the MME Calculator"/>
+      <exampleBoolean value="true"/>
+    </resource>
     <page>
       <nameUrl value="toc.html"/>
       <title value="Table of Contents"/>
@@ -130,6 +226,14 @@
     <parameter>
       <code value="path-resource" />
       <value value="input/vocabulary/valueset"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/ConversionFactorsClinicalTests/cfct-example" />
+    </parameter>
+    <parameter>
+      <code value="path-resource" />
+      <value value="input/tests/ConversionFactorsTests/cft-example" />
     </parameter>
     <parameter>
       <code value="path-resource" />

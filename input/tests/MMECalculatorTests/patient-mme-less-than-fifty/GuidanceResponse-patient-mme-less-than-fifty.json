@@ -1,0 +1,29 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "patient-mme-less-than-fifty",
+  "contained": [
+    {
+      "resourceType": "Parameters",
+      "id": "output",
+      "parameter": [
+        {
+          "name": "TotalMME",
+          "valueQuantity": {
+            "value": 30.0,
+            "system": "http://unitsofmeasure.org",
+            "code": "{MME}/d"
+          }
+        }
+      ]
+    }
+
+  ],
+  "moduleCanonical": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/MMECalculatorTests",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/patient-mme-less-than-fifty"
+  },
+  "outputParameters": {
+    "reference": "#output"
+  }
+}

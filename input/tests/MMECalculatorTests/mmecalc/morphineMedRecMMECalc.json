@@ -1,0 +1,196 @@
+{
+    "resourceType": "MedicationRequest",
+    "id": "morphineMedReqMMECalc",
+    "identifier": [
+        {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.478.3.7.2.798268",
+            "value": "1915173"
+        }
+    ],
+    "status": "active",
+    "intent": "order",
+    "medicationCodeableConcept": {
+        "coding": [
+            {
+                "system": "http://www.whocc.no/atc",
+                "code": "N02AA01"
+            },
+            {
+                "system": "urn:oid:2.16.840.1.113883.6.208",
+                "code": "60356"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "7052"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "30236"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "151999"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "152164"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "152356"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "153664"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203240"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203354"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203355"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203356"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203357"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "203358"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "219576"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "219632"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "225993"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "352452"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "885779"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "892596"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "892598"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "1745876"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "1871435"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "2055303"
+            }
+        ],
+        "text": "MORPHINE ER 20 MG CAPSULE,EXTENDED RELEASE PELLETS"
+    },
+    "subject": {
+        "reference": "Patient/mmecalc"
+    },
+    "authoredOn": "2020-10-29",
+    "dosageInstruction": [
+        {
+            "extension": [
+                {
+                    "url": "https://open.epic.com/fhir/extensions/admin-amount",
+                    "valueQuantity": {
+                        "value": 1,
+                        "unit": "capsule",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "{capsule}"
+                    }
+                },
+                {
+                    "url": "https://open.epic.com/fhir/extensions/ordered-dose",
+                    "valueQuantity": {
+                        "value": 20,
+                        "unit": "mg",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mg"
+                    }
+                }
+            ],
+            "text": "Take 1 capsule (20 mg total) by mouth daily.",
+            "patientInstruction": "Take 1 capsule (20 mg total) by mouth daily.",
+            "timing": {
+                "repeat": {
+                    "boundsPeriod": {
+                        "start": "2020-10-29"
+                    },
+                    "timeOfDay": [
+                        "10:00:00"
+                    ]
+                },
+                "code": {
+                    "text": "1000 every 24h scheduled"
+                }
+            },
+            "asNeededBoolean": false,
+            "route": {
+                "coding": [
+                    {
+                        "system": "urn:oid:1.2.840.114350.1.13.478.3.7.4.798268.7025",
+                        "code": "15",
+                        "display": "oral"
+                    }
+                ],
+                "text": "oral"
+            },
+            "method": {
+                "text": "Take"
+            },
+            "doseAndRate": [
+                {
+                    "doseQuantity": {
+                        "value": 20,
+                        "unit": "mg",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mg"
+                    }
+                }
+            ]
+        }
+    ],
+    "dispenseRequest": {
+        "validityPeriod": {
+            "start": "2020-10-29"
+        },
+        "quantity": {
+            "value": 1,
+            "unit": "capsule"
+        },
+        "expectedSupplyDuration": {
+            "value": 1,
+            "unit": "Day",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "mmecalc",
+  "contained": [
+    {
+      "resourceType": "Parameters",
+      "id": "output",
+      "parameter": [
+        {
+          "name": "TotalMME",
+          "valueQuantity": {
+            "value": 20.0,
+            "system": "http://unitsofmeasure.org",
+            "code": "{MME}/d"
+          }
+        }
+      ]
+    }
+  ],
+  "moduleCanonical": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/MMECalculatorTests",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/mmecalc"
+  },
+  "outputParameters": {
+    "reference": "#output"
+  }
+}

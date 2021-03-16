@@ -2,3 +2,184 @@
 
 # Add warning and/or information messages here after you've confirmed that they aren't really a problem
 # (And include comments like this justifying why)
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\opioid-mme-r4.xml ==
+INFORMATION: ImplementationGuide/cdc.fhir.opioid.mme: ImplementationGuide: Validate resource against profile http://hl7.org/fhir/StructureDefinition/ImplementationGuide
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-ConversionFactors.json ==
+INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/ConversionFactors: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/ConversionFactors: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-ConversionFactorsTests.json ==
+INFORMATION: Library/ConversionFactorsTests: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/ConversionFactorsTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/ConversionFactorsTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/ConversionFactorsTests: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactorsTests: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactorsTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/ConversionFactorsTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/ConversionFactorsTests: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-MMECalculator.json ==
+INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/MMECalculator: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/MMECalculator: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-MMECalculatorTests.json ==
+INFORMATION: Library/MMECalculatorTests: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/MMECalculatorTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/MMECalculatorTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/MMECalculatorTests: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculatorTests: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculatorTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/MMECalculatorTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/MMECalculatorTests: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKData.json ==
+INFORMATION: Library/OMTKData: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/OMTKData: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/OMTKData: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/OMTKData: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/OMTKData: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/OMTKData: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKData: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKDataTests.json ==
+INFORMATION: Library/OMTKDataTests: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/OMTKDataTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/OMTKDataTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/OMTKDataTests: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKDataTests: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKDataTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/OMTKDataTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/OMTKDataTests: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKLogic.json ==
+INFORMATION: Library/OMTKLogic: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/OMTKLogic: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/OMTKLogic: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/OMTKLogic: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKLogic: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKLogicTests.json ==
+INFORMATION: Library/OMTKLogicTests: Library: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Library
+INFORMATION: Library/OMTKLogicTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablelibrary - listed in meta
+INFORMATION: Library/OMTKLogicTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary - listed in meta
+INFORMATION: Library/OMTKLogicTests: Library.content[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogicTests: Library.content[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogicTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
+INFORMATION: Library/OMTKLogicTests: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
+INFORMATION: Library/OMTKLogicTests: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\ConversionFactorsClinicalTests\cfct-example\codesystem-cfct-example-CDCMMEClinicalConversionFactors.json ==
+INFORMATION: CodeSystem/cfct-example-CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/StructureDefinition/CodeSystem
+INFORMATION: CodeSystem/cfct-example-CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem - listed in meta
+INFORMATION: CodeSystem/cfct-example-CDCMMEClinicalConversionFactors: CodeSystem.extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/cfct-example-CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem - listed in meta
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\ConversionFactorsClinicalTests\cfct-example\patient-cfct-example.json ==
+INFORMATION: Patient/cfct-example: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\ConversionFactorsTests\cft-example\patient-cft-example.json ==
+INFORMATION: Patient/cft-example: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-greater-than-fifty\GuidanceResponse-patient-mme-greater-than-fifty.json ==
+INFORMATION: GuidanceResponse/patient-mme-greater-than-fifty: GuidanceResponse: Validate resource against profile http://hl7.org/fhir/StructureDefinition/GuidanceResponse
+INFORMATION: GuidanceResponse/patient-mme-greater-than-fifty: GuidanceResponse.contained.ofType(Parameters): Validate resource against profile http://hl7.org/fhir/StructureDefinition/Parameters
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-greater-than-fifty\example-rec-05-mme-greater-than-fifty-context.json ==
+INFORMATION: MedicationRequest/example-rec-05-mme-greater-than-fifty-context: MedicationRequest: Validate resource against profile http://hl7.org/fhir/StructureDefinition/MedicationRequest
+INFORMATION: MedicationRequest/example-rec-05-mme-greater-than-fifty-context: MedicationRequest: Validate resource against profile http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-greater-than-fifty\patient-mme-greater-than-fifty.json ==
+INFORMATION: Patient/patient-mme-greater-than-fifty: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-less-than-fifty\GuidanceResponse-patient-mme-less-than-fifty.json ==
+INFORMATION: GuidanceResponse/patient-mme-less-than-fifty: GuidanceResponse: Validate resource against profile http://hl7.org/fhir/StructureDefinition/GuidanceResponse
+INFORMATION: GuidanceResponse/patient-mme-less-than-fifty: GuidanceResponse.contained.ofType(Parameters): Validate resource against profile http://hl7.org/fhir/StructureDefinition/Parameters
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-less-than-fifty\example-rec-05-mme-less-than-fifty-context.json ==
+INFORMATION: MedicationRequest/example-rec-05-mme-less-than-fifty-context: MedicationRequest: Validate resource against profile http://hl7.org/fhir/StructureDefinition/MedicationRequest
+INFORMATION: MedicationRequest/example-rec-05-mme-less-than-fifty-context: MedicationRequest: Validate resource against profile http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-less-than-fifty\patient-mme-less-than-fifty.json ==
+INFORMATION: Patient/patient-mme-less-than-fifty: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-with-timeofday\GuidanceResponse-patient-mme-with-timeofday.json ==
+INFORMATION: GuidanceResponse/patient-mme-with-timeofday: GuidanceResponse: Validate resource against profile http://hl7.org/fhir/StructureDefinition/GuidanceResponse
+INFORMATION: GuidanceResponse/patient-mme-with-timeofday: GuidanceResponse.contained.ofType(Parameters): Validate resource against profile http://hl7.org/fhir/StructureDefinition/Parameters
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-with-timeofday\example-rec-05-mme-with-timeofday-context.json ==
+INFORMATION: MedicationRequest/example-rec-05-mme-with-timeofday-context: MedicationRequest: Validate resource against profile http://fhir.org/guides/cdc/opioid-mme-r4/StructureDefinition/mmemedicationrequest
+INFORMATION: MedicationRequest/example-rec-05-mme-with-timeofday-context: MedicationRequest: Validate resource against profile http://hl7.org/fhir/StructureDefinition/MedicationRequest
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-mme-with-timeofday\patient-mme-with-timeofday.json ==
+INFORMATION: Patient/patient-mme-with-timeofday: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\tests\MMECalculatorTests\patient-no-meds\patient-no-meds.json ==
+INFORMATION: Patient/patient-no-meds: Patient: Validate resource against profile http://hl7.org/fhir/StructureDefinition/Patient
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\vocabulary\codesystem\codesystem-CDCMMEClinicalConversionFactors.json ==
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/StructureDefinition/CodeSystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem - listed in meta
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem - listed in meta
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\vocabulary\codesystem\codesystem-CDCMMEUsageContextCodes.json ==
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource against profile http://hl7.org/fhir/StructureDefinition/CodeSystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem - listed in meta
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem - listed in meta
+
+# Verified
+== C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\profiles\medicationrequest-profile-spreadsheet.xml ==
+INFORMATION: StructureDefinition/mmemedicationrequest: StructureDefinition: Validate resource against profile http://hl7.org/fhir/StructureDefinition/StructureDefinition
