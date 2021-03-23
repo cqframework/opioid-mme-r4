@@ -3,8 +3,8 @@
   <id value="cdc.fhir.opioid.mme"/>
   <url value="http://fhir.org/guides/cdc/opioid-mme-r4/ImplementationGuide/cdc.fhir.opioid.mme"/>
   <version value="3.0.0"/>
-  <name value="OpioidMME"/>
-  <title value="Opioid MME"/>
+  <name value="CDCMMECQLCalculator"/>
+  <title value="CDC MME CQL Calculator"/>
   <status value="active"/>
   <experimental value="false"/>
   <publisher value="Centers for Disease Control and Prevention (CDC)"/>
@@ -14,7 +14,7 @@
       <value value="https://www.cdc.gov"/>
     </telecom>
   </contact>
-  <description value="Opioid Milligram Morphine Equivalent (MME) calculation logic"/>
+  <description value="Opioid Morphine Milligram Equivalent (MME) calculation logic in FHIR and Clinical Quality Language (CQL)"/>
   <jurisdiction>
     <coding>
       <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>

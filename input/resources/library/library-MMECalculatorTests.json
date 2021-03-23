@@ -32,6 +32,17 @@
     } ]
   },
   "description": "This library contains tests to validate the functionality of the FHIR R4 MME calculator",
+  "topic": [ {
+    "text": "Opioid Prescribing"
+  }, {
+    "text": "Morphine Milligram Equivalent (MME)"
+  } ],
+  "author": [
+    { "name": "Floyd Eisenberg, MD, MPH" },
+    { "name": "Kensaku Kawamoto, MD, PhD, MHS" },
+    { "name": "Robert McClure, MD" },
+    { "name": "Bryn Rhodes" }
+  ],
   "relatedArtifact": [ {
     "type": "depends-on",
     "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"

@@ -3,13 +3,30 @@
   <a name="intro"> </a>
   <h3>Introduction</h3>
 	<p>
-    This implementation guide provides Milligram Morphine Equivalent (MME) calculation logic as described by the
-    Centers For Disease Control and Prevention (CDC) Opioid Prescribing Guidelines:
+    This implementation guide provides Morphine Milligram Equivalent (MME) calculation logic as described by the
+    Centers For Disease Control and Prevention (CDC) Guideline for Prescribing Opioids for Chronic Pain — United
+    States, 2016, hereafter referred to as the CDC Opioid Prescribing Guideline, or just <em>the guideline</em>:
   </p>
-  <a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC guideline for prescribing opioids for chronic pain</a>
+
+  <p><a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC guideline for prescribing opioids for chronic pain</a></p>
+
+  <p>The MME calculator is expressed using <a href="http://cql.hl7.org">Clinical Quality Language (CQL)</a>,
+  and can be applied to Health Level 7 (HL7) <a href="http://hl7.org/fhir">Fast Healthcare Interoperability Resources (FHIR)</a>. A
+  primary use case for this calculator is <a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm#5_When_opioids_are_started">Recommendation #5</a>
+  of the guideline:</p>
+
+<p>
+    <strong>When opioids are started, providers should prescribe the lowest effective dosage.
+    Providers should use caution when prescribing opioids at any dosage, should carefully
+    reassess evidence of individual benefits and risks when considering increasing dosage
+    to ≥50 morphine milligram equivalents (MME)/day, and should avoid increasing dosage
+    to ≥90 MME/day or carefully justify a decision to titrate dosage to >90 MME/day
+    <em>(recommendation category: A, evidence type: 3)</em>.</strong>
+</p>
 
   <p>
-    This implementation guide was developed based on work initially done as part of the Clinical Quality Framework
+    This implementation guide was developed based on work initially done as part of the
+    <a href="https://confluence.hl7.org/display/CQIWC/Clinical+Quality+Framework">Clinical Quality Framework (CQF)</a>
     Initiative, a public-private partnership sponsored by the Centers for Medicare &amp; Medicaid Services (CMS) and
     the U.S. Office of the National Coordinator for Health Information Technology (ONC) to identify, develop, and harmonize
     standards for clinical decision support and electronic clinical quality measurement, as well as a joint effort by
@@ -22,21 +39,21 @@
   <h3>Overview</h3>
 
   <p>
-    The MME calculation guidance provided above is based on conversion factors for each of the various opioids.
+    The MME calculation information provided above is based on conversion factors for each of the various opioids.
     Due to the possibility of combination drugs, the component ingredients of a drug need to be considered in
     order to correctly determine the opioid ingredient strength. To determine this, the calculator requires
-    drug component information to be available. This information can be determined using the <a href="https://rxnav.nlm.nih.gov/">RxNav API</a>.
+    drug component information to be available. This information can be determined using the <a href="https://rxnav.nlm.nih.gov/">RxNav Application Programming Interface (API)</a>.
     To avoid having to include a service call to this API during the calculation, the required information is
     cached according to the process described <a href="http://build.fhir.org/ig/cqframework/opioid-cds-r4/service-documentation.html#solution-component-1-medication-and-terminology-knowledge-base">here</a>.
   </p>
 
   <p>
-    That process results in a Microsoft Access database. Within CQL, that data can be accessed by defining a
+    That process results in a Microsoft Access database. Within Clinical Quality Language (CQL), that data can be accessed by defining a
     data model (using CQL <a href="https://cql.hl7.org/07-physicalrepresentation.html#data-model-references">ModelInfo</a>)
     and using that to retrieve data from that database. However, that approach would introduce a run-time dependency
     for the MME calculator that would then need to be distributed with the calculator, as well as require
     implementing systems to support access using this data model. To avoid this runtime dependency, the
-    data is converted to a "pure" CQL expression, and distributed in the OMTKData CQL library.
+    data are converted to a "pure" CQL expression, and distributed in the OMTKData CQL library.
   </p>
 
   <p>
@@ -115,7 +132,7 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
 
   <p>
     The result of the <code>TotalMME</code> expression is then a CQL <a href="https://cql.hl7.org/09-b-cqlreference.html#quantity"><code>Quantity</code></a> value, with
-    units of <code>{MME}/d</code>, representing the combined Milligram Morphine Equivalent value of the input prescriptions.
+    units of <code>{MME}/d</code>, representing the combined Morphine Milligram Equivalent (MME) value of the input prescriptions.
   </p>
 
   <p>
@@ -218,12 +235,14 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
 
   <p><b>UCUM</b>: This product includes all or a portion of the UCUM table, UCUM codes, and UCUM definitions or is derived from it,
     subject to a license from Regenstrief Institute, Inc. and The UCUM Organization. Your use of the UCUM table,
-    UCUM codes, UCUM definitions also is subject to this license, a copy of which is available at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.
-    The current complete UCUM table, UCUM Specification are available for download at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.
-    The UCUM table and UCUM codes are copyright © 1995-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization.
+    UCUM codes, UCUM definitions also is subject to this license, a copy of which is available at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.<br/>
+    The current complete UCUM table, UCUM Specification are available for download at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a>.<br/>
+    The UCUM table and UCUM codes are copyright © 1995-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization.<br/>
     All rights reserved.</p>
 
   <p>THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDED "AS IS." ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+
+  <p>Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recmm Rep 2016;65(No. RR-1):1–49. DOI: <a href="http://dx.doi.org/10.15585/mmwr.rr6501e1">http://dx.doi.org/10.15585/mmwr.rr6501</a>.</p>
 
   <p><b>MME Calculation</b>: National Center for Injury Prevention and Control. Calculating total daily dose of opioids for safer dosage.
     Atlanta, GA: Centers for Disease Control and Prevention; <a href="https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf">https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf</a>,
@@ -248,5 +267,40 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
     <li>a. No warranties of any kind whatsoever are made as to the results that You will obtain from relying upon the covered code (or any information or content obtained by way of the covered code), including but not limited to compliance with privacy laws or regulations or clinical care industry standards and protocols. Use of the covered code is not a substitute for a health care provider's standard practice or professional judgment.  Any decision with regard to the appropriateness of, or the validity or reliability of information or content made available by the covered code, is the sole responsibility of the health care provider. Consequently, it is incumbent upon each health care provider to verify all medical history and treatment plans with each patient.</li>
     <li>b. Under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall any Contributor, or anyone who distributes Covered Software as permitted by the license, be liable to You for any indirect, special, incidental, consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other damages or losses, of any nature whatsoever (direct or otherwise) on account of or associated with the use or inability to use the covered content (including, without limitation, the use of  information or content made available by the covered code, all  documentation associated therewith, and the failure of the covered code to comply with privacy laws and regulations or clinical care industry standards and protocols), even if such party shall have been informed of the possibility of such damages.</li>
   </ul>
+
+  <p>The findings and conclusions on this website are those of the authors and do not necessarily
+    represent the official position of, the Centers for Disease Control and Prevention/the Agency
+    for Toxic Substances and Disease Registry, or the other organizations involved, nor does the
+    mention of trade names, commercial products, or organizations imply endorsement by the U.S.
+    Government.</p>
+
+  <a name="acknowledgements"> </a>
+  <h3>Acknowledgements</h3>
+
+  <table class="grid">
+  	<thead>
+  		<tr>
+  			<th>Contributing Authors</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+      <tr>
+  			<td>Bryn Rhodes</td>
+  		</tr>
+      <tr>
+  			<td>Floyd Eisenberg, MD, MPH</td>
+  		</tr>
+      <tr>
+  			<td>Kensaku Kawamoto, MD, PhD, MHS</td>
+  		</tr>
+      <tr>
+        <td>Robert McClure, MD</td>
+      </tr>
+  	</tbody>
+  </table>
+
+  <p>This work is funded by The Centers for Disease Control and Prevention and The Office of the
+    National Coordinator for Health Information Technology (ONC),
+    contract numbers HHSP233201800320G, HHSP233201700044C, and D15PD00739.</p>
 
 </div>

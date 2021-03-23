@@ -19,6 +19,39 @@
   }, {
     "url": "http://hl7.org/fhir/StructureDefinition/codesystem-sourceReference",
     "valueUri": "https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-author",
+    "valueString": "Floyd Eisenberg, MD, MPH"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-author",
+    "valueString": "Kensaku Kawamoto, MD, PhD, MHS"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-author",
+    "valueString": "Robert McClure, MD"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-author",
+    "valueString": "Bryn Rhodes"
+  }, {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-topic",
+    "valueCodeableConcept": {
+      "text": "Opioid Prescribing"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-topic",
+    "valueCodeableConcept": {
+      "text": "Morphine Milligram Equivalent (MME)"
+    }
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/codesystem-warning",
+    "valueMarkdown": "NOTE: Do not use the calculated dose in MMEs to determine dosage for converting one opioid to another—the new opioid should be lower to avoid unintentional overdose caused by incomplete cross-tolerance and individual differences in opioid pharmacokinetics. Consult the medication label."
+  }, {
+    "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-relatedArtifact",
+    "valueRelatedArtifact": {
+      "type": "documentation",
+      "label": "Conversion Factors",
+      "display": "Conversion Factors",
+      "url": "http://fhir.org/guides/cdc/opioid-mme-r4/conversion-factors.html"
+    }
   } ],
   "version": "3.0.0",
   "name": "CDCMMEUsageContextCodes",

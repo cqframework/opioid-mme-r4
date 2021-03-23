@@ -32,6 +32,17 @@
     } ]
   },
   "description": "This library contains tests of the OMTKData library",
+  "topic": [ {
+    "text": "Opioid Prescribing"
+  }, {
+    "text": "Morphine Milligram Equivalent (MME)"
+  } ],
+  "author": [
+    { "name": "Floyd Eisenberg, MD, MPH" },
+    { "name": "Kensaku Kawamoto, MD, PhD, MHS" },
+    { "name": "Robert McClure, MD" },
+    { "name": "Bryn Rhodes" }
+  ],
   "relatedArtifact": [ {
     "type": "depends-on",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKData|3.0.0"

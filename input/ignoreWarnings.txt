@@ -17,6 +17,16 @@ INFORMATION: Library/ConversionFactors: Library.content[2]: This element does no
 INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
 INFORMATION: Library/ConversionFactors: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
 INFORMATION: Library/ConversionFactors: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/ConversionFactors: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-ConversionFactorsTests.json ==
@@ -39,6 +49,16 @@ INFORMATION: Library/MMECalculator: Library.content[2]: This element does not ma
 INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablelibrary - listed in meta
 INFORMATION: Library/MMECalculator: Library: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary - listed in meta
 INFORMATION: Library/MMECalculator: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/MMECalculator: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-MMECalculatorTests.json ==
@@ -65,6 +85,12 @@ INFORMATION: Library/OMTKData: Library: Validate resource against profile http:/
 INFORMATION: Library/OMTKData: Library.relatedArtifact[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 INFORMATION: Library/OMTKData: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 INFORMATION: Library/OMTKData: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKData: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKDataTests.json ==
@@ -93,6 +119,10 @@ INFORMATION: Library/OMTKLogic: Library.relatedArtifact[0]: This element does no
 INFORMATION: Library/OMTKLogic: Library.relatedArtifact[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 INFORMATION: Library/OMTKLogic: Library.relatedArtifact[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 INFORMATION: Library/OMTKLogic: Library.content[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
+INFORMATION: Library/OMTKLogic: Library.relatedArtifact[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-executablelibrary
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\resources\library\library-OMTKLogicTests.json ==

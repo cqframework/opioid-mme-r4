@@ -116,7 +116,7 @@ define function Prescriptions(Orders List<MedicationRequest>):
     }
 
 /*
-Calculates Milligram Morphine Equivalent (MME) for each medication in the given
+Calculates Morphine Milligram Equivalent (MME) for each medication in the given
 list. The calculation assumes the most aggresive dosing, and is performed for all
 medications in the given list (i.e. no additional filtering for status is performed).
 */
@@ -133,7 +133,7 @@ define function MME(prescriptions List<MedicationRequest>):
     }
 
 /*
-Calculates total Milligram Morphine Equivalent (MME) for the given list of medications.
+Calculates total Morphine Milligram Equivalent (MME) for the given list of medications.
 The calculation assumes the most aggressive dosing, and is performed for all
 medications in the given list (i.e. no additional filtering for status is performed).
 */
