@@ -1,4 +1,8 @@
 
+This implementation guide provides a shareable implementation of a Morphine Milligram Equivalent (MME) calculator
+for medications, and logic for applying that base calculator to FHIR MedicationRequest resources. The calculation
+makes certain assumptions about the data elements that will be present in those MedicationRequest resources, and
+these expectations are expressed by the [MMEMedicationRequest](StructureDefinition-mmemedicationrequest.html) profile.
 
 The base MME calculator only requires the following information for each medication the patient is currently on:
 

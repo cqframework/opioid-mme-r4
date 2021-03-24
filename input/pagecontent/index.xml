@@ -5,15 +5,15 @@
 	<p>
     This implementation guide provides Morphine Milligram Equivalent (MME) calculation logic as described by the
     Centers For Disease Control and Prevention (CDC) Guideline for Prescribing Opioids for Chronic Pain — United
-    States, 2016, hereafter referred to as the CDC Opioid Prescribing Guideline, or just <em>the guideline</em>:
+    States, 2016, hereafter referred to as the CDC Opioid Prescribing Guideline, or just <em>the Guideline</em>:
   </p>
 
-  <p><a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC guideline for prescribing opioids for chronic pain</a></p>
+  <p><a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm">CDC Guideline for Prescribing Opioids for Chronic Pain</a></p>
 
   <p>The MME calculator is expressed using <a href="http://cql.hl7.org">Clinical Quality Language (CQL)</a>,
   and can be applied to Health Level 7 (HL7) <a href="http://hl7.org/fhir">Fast Healthcare Interoperability Resources (FHIR)</a>. A
   primary use case for this calculator is <a href="https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm#5_When_opioids_are_started">Recommendation #5</a>
-  of the guideline:</p>
+  of the Guideline:</p>
 
 <p>
     <strong>When opioids are started, providers should prescribe the lowest effective dosage.
