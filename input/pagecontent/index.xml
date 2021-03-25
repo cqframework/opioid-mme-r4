@@ -298,9 +298,4 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
       </tr>
   	</tbody>
   </table>
-
-  <p>This work is funded by The Centers for Disease Control and Prevention and The Office of the
-    National Coordinator for Health Information Technology (ONC),
-    contract numbers HHSP233201800320G, HHSP233201700044C, and D15PD00739.</p>
-
 </div>
