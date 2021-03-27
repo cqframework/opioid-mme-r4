@@ -106,12 +106,15 @@
     "url": "http://fhir.org/guides/cdc/opioid-mme-r4/mme-calculator.html"
   }, {
     "type": "depends-on",
+    "display": "Library OMTKData",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKData|3.0.0"
   }, {
     "type": "depends-on",
+    "display": "Library ConversionFactors",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/ConversionFactors|3.0.0"
   }, {
     "type": "depends-on",
+    "display": "Code system RXNORM",
     "resource": "http://www.nlm.nih.gov/research/umls/rxnorm"
   } ],
   "parameter": [ {

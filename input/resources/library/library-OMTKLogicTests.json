@@ -48,9 +48,11 @@
   } ],
   "relatedArtifact": [ {
     "type": "depends-on",
+    "display": "FHIR model information",
     "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
   }, {
     "type": "depends-on",
+    "display": "Library OMTKLogic",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKLogic|3.0.0"
   } ],
   "parameter": [ {

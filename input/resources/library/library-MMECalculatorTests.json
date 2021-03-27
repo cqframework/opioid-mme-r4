@@ -48,18 +48,23 @@
   } ],
   "relatedArtifact": [ {
     "type": "depends-on",
+    "display": "FHIR model information",
     "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
   }, {
     "type": "depends-on",
+    "display": "Library FHIRHelpers",
     "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
   }, {
     "type": "depends-on",
+    "display": "Library MMECalculator",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/MMECalculator|3.0.0"
   }, {
     "type": "depends-on",
+    "display": "Library OMTKLogic",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKLogic|3.0.0"
   }, {
     "type": "depends-on",
+    "display": "Library OMTKData",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKData|3.0.0"
   } ],
   "parameter": [ {

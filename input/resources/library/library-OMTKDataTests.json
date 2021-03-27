@@ -48,6 +48,7 @@
   } ],
   "relatedArtifact": [ {
     "type": "depends-on",
+    "display": "Library OMTKData",
     "resource": "http://fhir.org/guides/cdc/opioid-mme-r4/Library/OMTKData|3.0.0"
   } ],
   "parameter": [ {

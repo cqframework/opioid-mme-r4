@@ -261,7 +261,7 @@
             <p><b>Dependencies</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'depends-on') %}
-                <li>{{artifact.resource}}</li>
+                <li>{{artifact.display}} {{artifact.resource}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -269,7 +269,7 @@
             <p><b>Components</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'composed-of') %}
-                <li>{{artifact.resource}}</li>
+                <li>{{artifact.display}} {{artifact.resource}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -277,7 +277,7 @@
             <p><b>Derived From</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'derived-from') %}
-                <li>{{artifact.resource}}</li>
+                <li>{{artifact.display}} {{artifact.resource}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -285,7 +285,7 @@
             <p><b>Successor</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'successor') %}
-                <li>{{artifact.resource}}</li>
+                <li>{{artifact.display}} {{artifact.resource}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -293,7 +293,7 @@
             <p><b>Predecessor</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'predecessor') %}
-                <li>{{artifact.resource}}</li>
+                <li>{{artifact.display}} {{artifact.resource}}</li>
               {% endfor %}
             </ul>
             {% endif %}
