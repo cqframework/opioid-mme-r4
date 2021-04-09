@@ -112,7 +112,7 @@
     to be referenced by including the MMECalculator in a CQL library:
   </p>
 
-  <code><pre>library Example version '0.1.0'
+  <pre><code class="language-cql">library Example version '0.1.0'
 
 using FHIR version '4.0.1'
 
@@ -120,7 +120,7 @@ include fhir.cdc."opioid-mme-r4".MMECalculator version '3.0.0'
 
 context Patient
 
-define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
+define TotalMME: MMECalculator.TotalMME([MedicationRequest])</code></pre>
 
   <p>
     This example library calls the <code>TotalMME</code> function of the <code>MMECalculator</code> library,
@@ -140,10 +140,10 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
     element of the <code>ImplementationGuide</code> resource:
   </p>
 
-  <code><pre>&lt;dependsOn&gt;
+  <pre><code class="language-xml">&lt;dependsOn&gt;
   &lt;packageId value=&quot;fhir.cdc.opioid-mme-r4&quot;/&gt;
   &lt;version value=&quot;dev&quot;/&gt;
-&lt;/dependsOn&gt;</pre></code>
+&lt;/dependsOn&gt;</code></pre>
 
   <div class="info">
     <p>
@@ -173,7 +173,7 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</pre></code>
     The core calculator tests are expressed in pure CQL as expressions with expected result values. For example:
   </p>
 
-  <pre><code>// 100 mg X (60 tablets/30 days) X 0.4 = 80 MME/day
+  <pre><code class="language-cql">// 100 mg X (60 tablets/30 days) X 0.4 = 80 MME/day
   define TestDrug_Tapentadol: {
     rxNormCode: Code '1148797' from OMTKLogic.RXNORM display '12 HR tapentadol 100 MG Extended Release Oral Tablet',
     doseQuantity: 1 '{tab}',
