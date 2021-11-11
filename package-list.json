@@ -3,8 +3,7 @@
  "title" : "CDC Opioid MME",
  "canonical" : "http://fhir.org/guides/cdc/opioid-mme-r4",
  "category": "Quality / CDS",
- "introduction" : "This implementation guide provides Milligram Morphine Equivalent calculation logic consistent with the
- Centers For Disease Control and Prevention (CDC) Opioid Prescribing Guidelines.",
+ "introduction" : "This implementation guide provides Milligram Morphine Equivalent calculation logic consistent with the Centers For Disease Control and Prevention (CDC) Opioid Prescribing Guidelines.",
  "list" : [{
   "version" : "current",
   "desc" : "Continuous Integration Build (latest in version control)",
