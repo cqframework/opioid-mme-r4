@@ -1,5 +1,5 @@
 {
- "package-id" : "fhir.cdc.opioid.mme",
+ "package-id" : "fhir.cdc.opioid-mme-r4",
  "title" : "CDC Opioid MME Calculator",
  "canonical" : "http://fhir.org/guides/cdc/opioid-mme-r4",
  "category": "Quality / CDS",
