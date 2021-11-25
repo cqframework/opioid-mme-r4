@@ -97,6 +97,11 @@
     both <a href="http://hl7.org/fhir/STU3">FHIR STU3</a> and <a href="http://hl7.org/fhir/R4">FHIR R4</a> versions.
   </p>
 
+  <p>
+    Note that because FHIR implementation guides typically only target a single FHIR version, the canonical base and package id
+    for this implementation guide include the `r4` designator to distinguish packages targeting FHIR R4.
+  </p>
+
   <a name="data-elements"> </a>
   <h3>Data Elements</h3>
 
