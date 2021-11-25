@@ -22,7 +22,7 @@
   } ],
   "version": "3.0.0",
   "name": "ConversionFactorsTests",
-  "title": "Morphine Milligram Equivalent (MME) Conversion Factors for FHIR R4",
+  "title": "Tests for the Morphine Milligram Equivalent (MME) Conversion Factors for FHIR R4",
   "status": "active",
   "experimental": true,
   "type": {

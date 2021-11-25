@@ -35,6 +35,12 @@
     using the CDC Opioid Prescribing Guideline as a model case.
   </p>
 
+  <p>
+    Feedback and contributions are welcome and can be submitted using the New Issue link in the footer of every page. Discussions on the
+    use of this IG as well as other CQF projects take place regularly on the <a href="https://confluence.hl7.org/display/CDS/CPGonFHIR">CPG-on-FHIR calls</a>,
+    a subworkgroup of the HL7 Clinical Decision Support Workgroup.
+  </p>
+
   <a name="overview"> </a>
   <h3>Overview</h3>
 
