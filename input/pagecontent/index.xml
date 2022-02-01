@@ -35,6 +35,12 @@
     using the CDC Opioid Prescribing Guideline as a model case.
   </p>
 
+  <p>
+    Feedback and contributions are welcome and can be submitted using the New Issue link in the footer of every page. Discussions on the
+    use of this IG as well as other CQF projects take place regularly on the <a href="https://confluence.hl7.org/display/CDS/CPGonFHIR">CPG-on-FHIR calls</a>,
+    a subworkgroup of the HL7 Clinical Decision Support Workgroup.
+  </p>
+
   <a name="overview"> </a>
   <h3>Overview</h3>
 
@@ -89,6 +95,11 @@
     is being used with <a href="http://ecqi.healthit.gov/qdm">Quality Data Model</a> as part of the specification of a Potential Opioid Overuse electronic
     Clinical Quality Measure (eCQM), and as part of the computable representation of the CDC Opioid Prescribing Guideline in
     both <a href="http://hl7.org/fhir/STU3">FHIR STU3</a> and <a href="http://hl7.org/fhir/R4">FHIR R4</a> versions.
+  </p>
+
+  <p>
+    Note that because FHIR implementation guides typically only target a single FHIR version, the canonical base and package id
+    for this implementation guide include the `r4` designator to distinguish packages targeting FHIR R4.
   </p>
 
   <a name="data-elements"> </a>

@@ -202,6 +202,19 @@ INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate re
 INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem - listed in meta
 INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
 INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem - listed in meta
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[5]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[6]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[7]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[8]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[9]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[10]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[11]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[12]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[13]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[14]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[15]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEClinicalConversionFactors: CodeSystem.extension[10]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\vocabulary\codesystem\codesystem-CDCMMEUsageContextCodes.json ==
@@ -209,6 +222,15 @@ INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource a
 INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem - listed in meta
 INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
 INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem: Validate resource against profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem - listed in meta
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[4]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[5]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[6]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[7]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[8]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[9]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[10]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[11]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-shareablecodesystem
+INFORMATION: CodeSystem/CDCMMEUsageContextCodes: CodeSystem.extension[10]: This element does not match any known slice defined in the profile http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablecodesystem
 
 # Verified
 == C:\Users\Bryn\Documents\Src\SS\Pilots\Opioid\opioid-mme-r4\input\profiles\medicationrequest-profile-spreadsheet.xml ==
