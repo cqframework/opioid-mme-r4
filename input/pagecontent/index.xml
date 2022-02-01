@@ -242,7 +242,7 @@ define TotalMME: MMECalculator.TotalMME([MedicationRequest])</code></pre>
 
   <p>THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDED "AS IS." ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
 
-  <p>Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recmm Rep 2016;65(No. RR-1):1–49. DOI: <a href="http://dx.doi.org/10.15585/mmwr.rr6501e1">http://dx.doi.org/10.15585/mmwr.rr6501</a>.</p>
+  <p>Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recmm Rep 2016;65(No. RR-1):1–49. DOI: <a href="http://dx.doi.org/10.15585/mmwr.rr6501e1">http://dx.doi.org/10.15585/mmwr.rr6501e1</a>.</p>
 
   <p><b>MME Calculation</b>: National Center for Injury Prevention and Control. Calculating total daily dose of opioids for safer dosage.
     Atlanta, GA: Centers for Disease Control and Prevention; <a href="https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf">https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf</a>,
