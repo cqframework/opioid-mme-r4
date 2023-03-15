@@ -45,8 +45,30 @@ Systems that only need to support one set of conversion factors can be configure
 
 ### Cautions
 
-> **Caution**: The conversion factors supplied with this content are provided by the CDC as part of the Opioid Prescribing Guideline. Configuring the calculator to use conversion factors other than those provided here should be done with extreme caution and under the direction of appropriate clinical expertise.
+> **Caution**: All doses are in mg/day except for fentanyl, which is mcg/hr. 
 
-> **Caution**: Buprenorphine, as a partial opioid agonist, is not associated with overdose in the same dose-dependent manner as observed with medications that are full opioid agonists, and is not/should not be included in the calculator
+> **Caution**: Equianalgesic dose conversions are only estimates and cannot account for individual variability in genetics and pharmacokinetics. 
 
-> **Caution**: Equianalgesic dose conversions are only estimates and cannot account for individual variability in genetics and pharmacokinetics.
+> **Caution**: Buprenorphine products approved for the treatment of pain are not included in the table because of their partial µ-receptor agonist activity and resultant ceiling effects compared with full µ-receptor agonists. 
+
+> **Caution**: These conversion factors should not be applied to dosage decisions related to the management of opioid use disorder.
+
+#### MME Doses for Commonly Prescribed Opioids for Pain Management Table
+
+| Opioid                           | Conversion Factor |
+|----------------------------------|:-----------------:|
+| Codeine                          | 0.15 |
+| Fentanyl transdermal (in mcg/hr) | 2.4 |
+| Hydrocodone                      | 1.0 |
+| Hydromorphone                    | 5.0 |
+| Methadone                        | 4.7 |
+| Morphine                         | 1.0 |
+| Oxycodone                        | 1.5 |
+| Oxymorphone                      | 3.0 |
+| Tapentadol [^1]                  | 0.4 |
+| Tramadol [^2]                    | 0.2 |
+{: .grid }
+
+[^1]: Tapentadol is a µ-receptor agonist and norepinephrine reuptake inhibitor. MMEs are based on degree of µ-receptor agonist activity; however, it is unknown whether tapentadol is associated with overdose in the same dose-dependent manner as observed with medications that are solely µ-receptor agonists.
+
+[^2]: Tramadol is a µ-receptor agonist and norepinephrine and serotonin reuptake inhibitor. MMEs are based on degree of µ-receptor agonist activity; however, it is unknown whether tramadol is associated with overdose in the same dose-dependent manner as observed with medications that are solely µ-receptor agonists.
